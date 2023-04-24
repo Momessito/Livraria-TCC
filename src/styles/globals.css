@@ -1,3 +1,4 @@
+  @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,11 +18,146 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: black;
+  background-color: #FAF8F6;
+  font-family: 'Work Sans', sans-serif;
 }
+  nav ul{
+      display: flex;
+      margin-left: 15px;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-content: space-between;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  
+  nav h1{
+    font-weight: bold;
+    font-size: 20px;
+  }
+  nav li{
+  display: flex;
+     margin: 10px;
+     margin-top: 5px;
+     margin-bottom: 5px;
+     cursor: pointer;
+     border-bottom: 2px solid transparent;;
+     transition: 0.4s all linear;
+
+  }
+  nav li:hover{
+    border-bottom: 2px solid black;;
+  }
+  .active{
+    border-bottom: 2px solid black;
+  }
+  nav{
+      margin: 0%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 50px;
+      margin-top: 5px;
+      margin-right: 50px;
+  }
+  
+  nav .input{
+    cursor: pointer;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid transparent ;
+      transition: 0.5s all linear;
+      padding: 5px;
+  }
+  
+  nav .input input{
+      border: none;
+      outline: none;
+      margin-left: 5px;
+      background-color: transparent;
+      width: 0px;
+      transition: 0.3s all linear;
+
+  }
+
+  nav input:focus{
+      border: none;
+      outline: none;
+      margin-left: 5px;
+      background-color: transparent;
+      width: 200px;
+  }
+  
+
+
+  nav button{
+      border: none;
+      background: none;
+      border: 1px solid transparent;
+      transition: 0.4s all linear;
+      padding: 5px;
+  }
+  
+  .esquerda{
+      display: flex;
+      align-items: center;
+  }
+  
+  .direita {
+    display: flex;
+    align-items: center;
+}
+  
+  nav button:hover{
+    border: 1px solid black;
+    border-radius: 55px;
+  }
+
+  .First button{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: bold;
+      font-size: large;
+      background-color: rgb(14, 0, 0);
+      color: rgb(235, 235, 235);
+      padding: 12px;
+      padding-left: 35px;
+      padding-right: 35px;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s all linear;
+      margin-top: 50px;
+  }
+  .First button:active{
+    border-radius: 25px;
+    background-color: black;
+    color: gainsboro;
+    transform: scale(1.09);
+  }
+  .First p{
+    margin-top: 20px;
+  }
+  .First button:hover{
+    border-radius: 25px;
+  }
+
+  .First h1{
+    font-size: 50px;
+    font-weight: bold;
+  }
+  .Second{
+    width: 300px;
+    display: flex;
+  }
+  .Second img{
+    width: 100%;
+  }
+  .First {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 550px;
+  }
