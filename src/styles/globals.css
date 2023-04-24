@@ -126,8 +126,9 @@ body {
       padding-right: 35px;
       border: none;
       cursor: pointer;
-      transition: 0.2s all linear;
+      transition: 0.1s all linear;
       margin-top: 50px;
+      user-select: none;
   }
   .First button:active{
     border-radius: 25px;
@@ -167,21 +168,21 @@ body {
     width: 25px;
     background-color: #272727;
     height: 2px;
-    margin: 5px;
+    margin: 3px;
     border-radius: 20px;
   }
   .burger2{
     width: 20px;
     background-color: #272727;
     height: 2px;
-    margin: 5px;
+    margin: 3px;
     transition: 0.3s all linear;
   }
   .burger3{
     background-color: #272727;
     height: 2px;
     width: 15px;
-    margin: 5px;
+    margin: 3px;
     transition: 0.3s all linear;
     
   }
@@ -224,7 +225,8 @@ body {
   }
 
   .SideMenu{
-    position: absolute;
+    position: fixed;
+    z-index: 11;
     top: 0;
     left: 0;
     height: 100vh;
@@ -278,4 +280,22 @@ body {
       margin: 50px;
       justify-content: center;
     }
+  }
+
+  .burger{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .blur{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    filter: blur(8px);
+    opacity: 0;
+    transition: 0.2s all linear;
+    z-index: -10;
+    background-color: rgba(0, 0, 0, 0.267);
   }
