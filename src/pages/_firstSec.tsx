@@ -1,6 +1,6 @@
 
 function FirstSection() {
-    return ( <div style={{margin : '20px' , display : 'flex',alignItems : 'center',justifyContent : 'space-between'}}>
+    return ( <div className="Title" style={{}}>
         <div className="First">
         <h1> Find Your </h1>
    <h1>Next Book</h1>
