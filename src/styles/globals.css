@@ -4,14 +4,14 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: #FAF8F6;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
+    --foreground-rgb: #0000;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
@@ -225,17 +225,40 @@ body {
   }
 
   .SideMenu{
-    position: fixed;
+    position: absolute;
     z-index: 11;
     top: 0;
-    left: 0;
-    height: 100vh;
-    width: 200px;
+    right: 0;
+    height: 250px;
+    overflow: hidden;
+    border-left: 1px solid black;
+    width: 50%;
     background-color: #FAF8F6;
-    border-right: 2px solid black;
-    transform: translateX(-2500px);
+    border-bottom: 1px solid black;
+    transform: translateY(60px);
+    opacity: 0;
+    transition: 0.4s all linear;
+    visibility: hidden;
+  }
+  body::before {
+    content: '';
+    width: 50%;
+    height: 1px;
+    opacity: 1;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    top: 60px;
+    z-index: 10;
+    transform-origin: right; /* define o eixo de transformação para o lado esquerdo */
+    transform: scaleX(0); /* define a largura inicial como 0 */
     transition: 0.3s all linear;
   }
+  
+  body.menu-open::before {
+    transform: scaleX(1); /* define a largura final como 1 */
+  }
+  
   .SideMenu ul{
     display: flex;
     flex-direction: column;

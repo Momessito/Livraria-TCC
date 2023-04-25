@@ -1,6 +1,10 @@
+import { useCookies } from "react-cookie";
 import { SideMenu } from "./_sideMenu";
 
 function Navbar(){
+    const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+
+
 
 var istrue : boolean  = true
 
@@ -20,33 +24,40 @@ a.style.width = "0px";
 a.placeholder = ""
 }
 
-function abrirMenu(){
-    const burger1 : any = document.querySelector('.burger1')
-    const burger2 : any = document.querySelector('.burger2')
-    const burger3 : any = document.querySelector('.burger3')
-    const SideMenu : any = document.querySelector('.SideMenu')
-    if(istrue === true){
-        burger2.style.width = '25px';
-        burger3.style.width = '25px';
-        SideMenu.style.transform = 'translate(0px)';
-        istrue = false
-    }else{
-        istrue = true
-        burger2.style.width = '20px';
-        burger3.style.width = '15px';
-        SideMenu.style.transform = 'translate(-2500px)';
-
+function abrirMenu() {
+    const burger1 : any = document.querySelector('.burger1');
+    const burger2 : any = document.querySelector('.burger2');
+    const burger3 : any = document.querySelector('.burger3');
+    const SideMenu : any = document.querySelector('.SideMenu');
+    const nave : any = document.querySelector('.nav');
+    const body : any = document.querySelector('body');
+  
+    if (istrue === true) {
+      SideMenu.style.visibility = 'visible';
+      SideMenu.style.opacity = '1';
+      burger2.style.width = '25px';
+      burger3.style.width = '25px';
+      body.classList.add('menu-open'); // adiciona a classe menu-open ao body
+      istrue = false;
+    } else {
+      SideMenu.style.visibility = 'hidden';
+      SideMenu.style.opacity = '0';
+      burger2.style.width = '20px';
+      burger3.style.width = '15px';
+      body.classList.remove('menu-open'); // remove a classe menu-open do body
+      istrue = true;
     }
-}
+  }
+  
     return(
-<nav> 
+<nav className=""> 
     <SideMenu />
         <div className="esquerda"> 
-  <h1>On.Book</h1>
+  <h1><a href="/">On.Book</a></h1>
 <ul className="desktop">
-    <li className="active"> <a>Books</a></li>
+    <li className="active"> <a href="/">Home</a></li>
     <li> <a>Categorias</a></li>
-    <li><a>Wishist</a></li>
+    <li><a href="/livro">books</a></li>
     <li> <a>Blog</a></li>
     <li> <a>About Us</a> </li>
 </ul>
