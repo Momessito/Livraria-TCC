@@ -53,11 +53,11 @@ function abrirMenu() {
 <nav className=""> 
     <SideMenu />
         <div className="esquerda"> 
-  <h1><a href="/">On.Book</a></h1>
+  <h1><a>On.Book</a></h1>
 <ul className="desktop">
-    <li className="active"> <a href="/">Home</a></li>
+    <li className="active"> <a>Home</a></li>
     <li> <a>Categorias</a></li>
-    <li><a href="/livro">books</a></li>
+    <li><a>books</a></li>
     <li> <a>Blog</a></li>
     <li> <a>About Us</a> </li>
 </ul>
