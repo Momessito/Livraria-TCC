@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useCookies } from "react-cookie";
 import { SideMenu } from "./_sideMenu";
 
@@ -53,7 +54,7 @@ function abrirMenu() {
 <nav className=""> 
     <SideMenu />
         <div className="esquerda"> 
-  <h1><a>On.Book</a></h1>
+  <h1><Link href='/'>On.Book</Link></h1>
 <ul className="desktop">
     <li className="active"> <a>Home</a></li>
     <li> <a>Categorias</a></li>
