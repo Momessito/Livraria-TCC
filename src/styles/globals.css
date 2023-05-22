@@ -54,7 +54,7 @@ body {
     border-bottom: 2px solid #002734;
   }
   nav{
-      margin: 0%;
+      margin: 0% !important;
       display: flex;
       align-items: center;
       justify-content: space-between;
