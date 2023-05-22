@@ -229,3 +229,18 @@ justify-content: center;
         transform: translateY(0px);
     }
   }
+  .Tirth div{
+    animation: Top 1s linear;
+  }
+  @keyframes Top {
+
+    0% {
+      transform: translateY(05px);
+      opacity: 0;
+
+    }100%{
+        transform: translateY(0px);
+        opacity: 1;
+
+    }
+  }

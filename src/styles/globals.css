@@ -240,12 +240,13 @@ body {
     overflow: hidden;
     border-left: 1px solid #002734;
     width: 50%;
-    background-color: #FAF8F6;
+    background-color: #cbd7e0;
     border-bottom: 1px solid #002734;
     transform: translateY(60px);
     opacity: 0;
     transition: 0.4s all linear;
     visibility: hidden;
+    border-bottom-left-radius: 10px;
   }
   body::before {
     content: '';
