@@ -215,3 +215,17 @@ justify-content: center;
     color: #002734;
     fill: #002734;
   }
+  .Title img{
+    animation: breath 2s infinite;
+  }
+
+  @keyframes breath {
+
+    0% {
+      transform: translateY(0px);
+    }50%{
+        transform: translateY(5px);
+    }100%{
+        transform: translateY(0px);
+    }
+  }
