@@ -1,5 +1,4 @@
 import '@/styles/globals.css'
-import "@/styles/section1.css"
 import "animate.css/animate.min.css";
 
 
