@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,600;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500&display=swap');
+
+.First{
+    color: #002734;
+}
+.First h1{
+    text-align: left;
+    width: 100%;
+    font-size: 2.8rem;
+    font-family: 'Playfair Display', serif;
+}
+.First h1 span{
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-style: italic;
+}
+.First{
+    align-items: flex-start;
+}
+.First small{
+    font-size: medium;
+}
+.First p{
+    width: 70%;
+    text-align: left;
+    font-weight: 600;
+    font-size: large;
+}
+.Title{
+    background-color: #cbd7e0;
+    margin: 0;
+    padding: 10px;
+}
+.Title img {
+filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.308));
+}
+nav{
+    padding-bottom: 10px;
+    background-color: #cbd7e0;
+    margin: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color:  #002734;
+}
+.First button svg{
+margin: 5px;
+}
+.First button a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.First button{
+    margin: 5px;
+    margin-top: 20px;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.First {
+    width: 50% !important;
+}
+.FirstSec{
+    background-color: #cbd7e0;
+}
+.Tirth{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-top: 30px;
+     margin-left: 40px;
+     margin-right: 40px;
+     border-top: 4px solid #98a1a860;
+}
+.Tirth div{
+    width: 20%;
+    margin:3%;
+
+}
+.Tirth div h1{
+    font-size: larger;
+}
+.Tirth h1{
+    font-weight: bold;
+}
+.Benefícios h1{
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing:  2px;
+    font-style: italic;
+}
+.Suporte h1{
+    font-family: 'Playfair Display', serif;
+
+}
+.Segurança h1{
+    font-family: 'Staatliches', cursive;
+}
+.Inovação h1{
+    font-family: 'Bodoni Moda', serif;
+}
+@media screen and (max-width : 600px) {
+    .Tirth{
+        flex-direction: column;
+    }
+    .Tirth div{
+        width: 100%;
+    }
+}
+.Tirth svg{
+    width: 16px;
+}
+.Tirth h1{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.BlobMain {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 50%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    z-index: 1;
+  }
+
+  .FirstSec div{
+    z-index: 10;
+  }
+
+  @media screen and (max-width : 800px) {
+    .BlobMain {
+        position: absolute;
+        left: 0;
+        top: 50px;
+        width: 80%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        z-index: 1;
+      }
+  }
+  @media screen and (max-width : 425px) {
+    .BlobMain {
+        position: absolute;
+        left: 0;
+        top: 50px;
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        z-index: 1;
+      }
+  }
+  .First{
+    animation: Direita 1s linear;
+  }
+  .Second{
+    animation: Esquerda 1s linear;
+
+  }
+
+  @keyframes Direita {
+    0% {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0px);
+      opacity: 1;
+
+    }
+  }
+  @keyframes Esquerda {
+    0% {
+      transform: translateX(50px);
+      opacity: 0;
+
+    }
+    100% {
+      transform: translateX(0px);
+      opacity: 1;
+
+    }
+  }
+  @keyframes Topo {
+    0% {
+      transform: translateY(5px);
+      opacity: 0;
+
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+
+    }
+  }
+  nav{
+    animation: Topo 1s linear;
+  }
+
+  body{
+    overflow-x: hidden;
+  }
+  .First button:hover{
+    background-color: #f5f5f5;
+    color: #002734;
+    fill: #002734;
+  }
