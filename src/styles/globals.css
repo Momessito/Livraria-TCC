@@ -2,10 +2,6 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,600;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
   --foreground-rgb: #FAF8F6;
   --background-start-rgb: 214, 219, 220;
@@ -525,10 +521,10 @@ body {
     text-align: left;
     width: 100%;
     font-size: 2.8rem;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', serif !important;
 }
 .First h1 span{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', serif !important;
     font-weight: 700;
     font-style: italic;
 }
@@ -606,17 +602,17 @@ margin: 5px;
     font-weight: bold;
 }
 .Benefícios h1{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', serif !important;
     font-weight: 700;
     letter-spacing:  2px;
     font-style: italic;
 }
 .Suporte h1{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', serif !important;
 
 }
 .Segurança h1{
-    font-family: 'Staatliches', cursive;
+    font-family: 'Staatliches', cursive !important;
 }
 .Inovação h1{
     font-family: 'Bodoni Moda', serif;
