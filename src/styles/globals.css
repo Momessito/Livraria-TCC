@@ -19,11 +19,7 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-body {
-  color: #002734;
-  background-color: #e0e5e9;
-  font-family: 'Work Sans', sans-serif;
-}
+
   nav ul{
       display: flex;
       margin-left: 15px;
@@ -759,4 +755,10 @@ justify-content: center;
         opacity: 1;
 
     }
+  }
+
+  body {
+    color: #002734;
+    background-color: #e0e5e9;
+    font-family: 'Work Sans', sans-serif;
   }
