@@ -25,4 +25,16 @@ npm install
 e para iniciar:
 npm run dev
 ```
+botões: filland (para confirmar algo)
+cor primaria: azul 
+vermelha para erro
+verde para acerto 
+amarelo para atenção
+
+ npm i -D daisyui@latest    terminal
+
+ #570FF2 cor principal 
+
+
+
 
