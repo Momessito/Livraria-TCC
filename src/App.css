@@ -1,0 +1,52 @@
+
+.navbar {
+  background-color: rgba(255, 255, 255, 1);
+  padding: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.338);
+  border-radius: 10px;
+  width: calc(100% - 20px);
+  transform: translateY(10px);
+  margin-bottom: 20px;
+}
+.StartImage {
+  background-image: url(/src/imgs/bg-header.jpg);
+  background-repeat: no-repeat;
+  height: 110vh;
+  width: 100%;
+  background-size: cover; /* Redimensiona a imagem para cobrir o elemento */
+}
+.StartContent{
+  margin: 10px;
+  margin-top: 0px;
+}
+#root{
+  background-color: rgb(243, 243, 243);
+  margin: 0;
+}
+
+.hero{
+  background-color: transparent;
+  min-height: calc(100vh - 20px);
+}
+.MainPage{
+  width: auto;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-100px);
+}
+.MainPage h1{
+  margin-top: 30px;
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #23095c;
+}
+.MainPage h4{
+  font-size: medium;
+  margin: 20px;
+}
