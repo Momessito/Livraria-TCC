@@ -1,5 +1,21 @@
+import React, { useState } from 'react';
+
 import Alert from './Components/Alert'
+
 export default function Table(){
+
+  const [selectAll, setSelectAll] = useState(false);
+
+  const handleSelectAll = () => {
+    const checkboxes = document.querySelectorAll('.checkbox');
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = !selectAll;
+    });
+
+    setSelectAll(!selectAll);
+  };
+
   return(<div className="overflow-x-auto tablePage">
 <div className="text-sm breadcrumbs">
   <ul>
@@ -17,188 +33,149 @@ export default function Table(){
     </li> 
   </ul>
 </div>
-<ul className="menu menu-horizontal lg:menu-horizontal bg-base-200 rounded-box">
-  <li><a>Adicionar</a></li>
-  <li><a>Editar</a></li>
-  <li><a>Excluir</a></li>
-</ul>
-<table className="table table-xs" style={{padding : '10px',border: '1px solid gray'}}>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Título</th>
-      <th>Autor</th>
-      <th>Matéria</th>
-      <th>Ano</th>
-      <th>Editora</th>
-      <th>ISBN</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>Matemática Avançada</td>
-      <td>Carlos Silva</td>
-      <td>Matemática</td>
-      <td>10º</td>
-      <td>Livros Universais</td>
-      <td>978-1234567890</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>História Mundial</td>
-      <td>Maria Santos</td>
-      <td>História</td>
-      <td>11º</td>
-      <td>Editora Histórias Vividas</td>
-      <td>978-9876543210</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Biologia Celular</td>
-      <td>João Rodrigues</td>
-      <td>Biologia</td>
-      <td>12º</td>
-      <td>BioLivros</td>
-      <td>978-5678901234</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Química Orgânica</td>
-      <td>Ana Ferreira</td>
-      <td>Química</td>
-      <td>11º</td>
-      <td>Editora Química Total</td>
-      <td>978-4321098765</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Literatura Brasileira</td>
-      <td>Pedro Gomes</td>
-      <td>Literatura</td>
-      <td>12º</td>
-      <td>Livros Literários</td>
-      <td>978-2109876543</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>Matemática Avançada</td>
-      <td>Carlos Silva</td>
-      <td>Matemática</td>
-      <td>10º</td>
-      <td>Livros Universais</td>
-      <td>978-1234567890</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>História Mundial</td>
-      <td>Maria Santos</td>
-      <td>História</td>
-      <td>11º</td>
-      <td>Editora Histórias Vividas</td>
-      <td>978-9876543210</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>Biologia Celular</td>
-      <td>João Rodrigues</td>
-      <td>Biologia</td>
-      <td>12º</td>
-      <td>BioLivros</td>
-      <td>978-5678901234</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Química Orgânica</td>
-      <td>Ana Ferreira</td>
-      <td>Química</td>
-      <td>11º</td>
-      <td>Editora Química Total</td>
-      <td>978-4321098765</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>Literatura Brasileira</td>
-      <td>Pedro Gomes</td>
-      <td>Literatura</td>
-      <td>12º</td>
-      <td>Livros Literários</td>
-      <td>978-2109876543</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Biologia Celular</td>
-      <td>João Rodrigues</td>
-      <td>Biologia</td>
-      <td>12º</td>
-      <td>BioLivros</td>
-      <td>978-5678901234</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>Química Orgânica</td>
-      <td>Ana Ferreira</td>
-      <td>Química</td>
-      <td>11º</td>
-      <td>Editora Química Total</td>
-      <td>978-4321098765</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>Literatura Brasileira</td>
-      <td>Pedro Gomes</td>
-      <td>Literatura</td>
-      <td>12º</td>
-      <td>Livros Literários</td>
-      <td>978-2109876543</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>Matemática Avançada</td>
-      <td>Carlos Silva</td>
-      <td>Matemática</td>
-      <td>10º</td>
-      <td>Livros Universais</td>
-      <td>978-1234567890</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>História Mundial</td>
-      <td>Maria Santos</td>
-      <td>História</td>
-      <td>11º</td>
-      <td>Editora Histórias Vividas</td>
-      <td>978-9876543210</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>Biologia Celular</td>
-      <td>João Rodrigues</td>
-      <td>Biologia</td>
-      <td>12º</td>
-      <td>BioLivros</td>
-      <td>978-5678901234</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>Química Orgânica</td>
-      <td>Ana Ferreira</td>
-      <td>Química</td>
-      <td>11º</td>
-      <td>Editora Química Total</td>
-      <td>978-4321098765</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>Literatura Brasileira</td>
-      <td>Pedro Gomes</td>
-      <td>Literatura</td>
-      <td>12º</td>
-      <td>Livros Literários</td>
-      <td>978-2109876543</td>
-    </tr>
-  </tbody>
-</table>
+<div className="overflow-x-auto">
+  <table className="table">
+    {/* cabeçalho */}
+    <thead>
+      <tr>
+        <th>
+          <label>
+            <input type="checkbox" className="checkbox"    
+                  checked={selectAll}
+                  onChange={handleSelectAll} />
+          </label>
+        </th>
+        <th>Título do Livro Didático</th>
+        <th>Autor</th>
+        <th>Disciplina</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {/* linha 1 */}
+      <tr className="hover:bg-primary-content">
+        <th>
+          <label>
+            <input type="checkbox" className="checkbox" />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center space-x-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src="https://www.boldstrokesbooks.com/assets/bsb/images/book-default-cover.jpg" alt="Capa do Livro Didático" />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Introdução à Matemática</div>
+              <div className="text-sm opacity-50">Jane Doe</div>
+            </div>
+          </div>
+        </td>
+        <td>
+          Editora Educação Global
+          <br/>
+          <span className="badge badge-ghost badge-sm">Professora de Matemática</span>
+        </td>
+        <td>Matemática</td>
+        <th>
+          <button className="btn btn-ghost btn-xs">Editar</button>
+        </th>
+      </tr>
+      {/* linha 2 */}
+      <tr className="hover:bg-primary-content">
+        <th>
+          <label>
+            <input type="checkbox" className="checkbox" />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center space-x-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src="https://www.boldstrokesbooks.com/assets/bsb/images/book-default-cover.jpg" alt="Capa do Livro Didático" />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">História Mundial: Uma Perspectiva Global</div>
+              <div className="text-sm opacity-50">John Smith</div>
+            </div>
+          </div>
+        </td>
+        <td>
+          Editora Conhecimento Universal
+          <br/>
+          <span className="badge badge-ghost badge-sm">Professor de História</span>
+        </td>
+        <td>História</td>
+        <th>
+          <button className="btn btn-ghost btn-xs">Editar</button>
+        </th>
+      </tr>
+      {/* linha 3 */}
+      <tr className="hover:bg-primary-content">
+        <th>
+          <label>
+            <input type="checkbox" className="checkbox" />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center space-x-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src="https://www.boldstrokesbooks.com/assets/bsb/images/book-default-cover.jpg" alt="Capa do Livro Didático" />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Ciências Naturais Exploradas</div>
+              <div className="text-sm opacity-50">Maria Silva</div>
+            </div>
+          </div>
+        </td>
+        <td>
+          Editora Saber Científico
+          <br/>
+          <span className="badge badge-ghost badge-sm">Professora de Ciências</span>
+        </td>
+        <td>Ciências</td>
+        <th>
+          <button className="btn btn-ghost btn-xs">Editar</button>
+        </th>
+      </tr>
+      {/* linha 4 */}
+      <tr className="hover:bg-primary-content">
+        <th>
+          <label>
+            <input type="checkbox" className="checkbox" />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center space-x-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src="https://www.boldstrokesbooks.com/assets/bsb/images/book-default-cover.jpg" alt="Capa do Livro Didático" />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Língua Viva: Gramática e Redação</div>
+              <div className="text-sm opacity-50">Carlos Santos</div>
+            </div>
+          </div>
+        </td>
+        <td>
+          Editora Linguagem Expressa
+          <br/>
+          <span className="badge badge-ghost badge-sm">Professor de Língua Portuguesa</span>
+        </td>
+        <td>Língua Portuguesa</td>
+        <th>
+          <button className="btn btn-ghost btn-xs">Editar</button>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <Alert text="Você está entrando como Leandro"/>
 </div>);  
 };

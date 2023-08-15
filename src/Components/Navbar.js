@@ -1,9 +1,10 @@
+import ThemeSwitcher from "./Theme";
 
 function NavbarMain(){
     return(
 <div class="navbar bg-base-100">
   <div class="navbar-start">
-    <div class="dropdown">
+    <div class="dropdown z-50">
       <label tabindex="0" class="btn btn-ghost btn-circle">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
       </label>
@@ -16,7 +17,7 @@ function NavbarMain(){
     </div>
   </div>
   <div class="navbar-center">
-    <a class="btn btn-ghost normal-case text-xl" href="/">Didacto</a>
+    <a class="btn btn-ghost normal-case text-xl hover:bg-cyan-700" href="/"><img className="w-14" style={{transform : 'scale(2)'}} src="https://i.ibb.co/sPX2dSh/Didactoicon.png"/></a>
   </div>
   <div class="navbar-end">
     <button class="btn btn-ghost btn-circle">
@@ -25,6 +26,8 @@ function NavbarMain(){
         <span class="badge badge-xs badge-primary indicator-item"></span>
       </div>
     </button>
+      <ThemeSwitcher />
+
     <button className="btn btn-ghost btn-circle">
     <div className="avatar placeholder">
       <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
