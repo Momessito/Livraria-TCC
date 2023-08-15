@@ -56,7 +56,7 @@ bottom: -100px;
 
 .hero{
   background-color: transparent;
-  min-height: calc(100vh - 20px);
+  height:100vh;
 }
 .MainPage{
   width: auto;
