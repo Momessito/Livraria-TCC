@@ -5,8 +5,38 @@
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.338);
   border-radius: 10px;
   width: calc(100% - 20px);
+  margin-left: 10px;
   transform: translateY(10px);
   margin-bottom: 20px;
+}
+.tablePage{
+  padding: 10px;
+}
+.alert{
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.445);
+  position: fixed;
+  bottom: -100px;
+margin: 0;
+left: 10px;
+margin-right: 10px;
+width: calc(100% - 20px);
+animation: alert 4s linear;
+}
+@keyframes alert{
+0%{
+bottom: -100px;
+}
+20%{
+  bottom: 10px;
+
+}
+80%{
+  bottom: 10px;
+
+}
+100%{
+  bottom: -100px;
+}
 }
 .StartImage {
   background-image: url(/src/imgs/bg-header.jpg);
