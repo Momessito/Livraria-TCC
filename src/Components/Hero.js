@@ -19,7 +19,7 @@ function Hero() {
       <div>
         
       <div className="h1">Didacto</div>
-        <p className="py-6 text-gray-600 font-semibold">O cadastro e controle direto da entrada e saida de livros didaticos para sua instituição de ensino publica e privada.</p>
+        <p className="py-6 font-semibold">O cadastro e controle direto da entrada e saida de livros didaticos para sua instituição de ensino publica e privada.</p>
         <button className="btn"onClick={scrollToMainHomePage}>Começar Agora</button>
       </div>
     </div>
