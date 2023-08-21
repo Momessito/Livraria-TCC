@@ -159,7 +159,7 @@ img.imgmain{
   }
   .h1{
     letter-spacing: 0.01em;
-    font-size: 3rem;
+    font-size: 5rem;
     text-shadow: 2px 2px 0px #2d66b6, 
     4px 4px 0px #5086c1, 
     6px 6px 0px  #6a9eda, 
@@ -175,6 +175,8 @@ img.imgmain{
     10px 10px 0px #FFD662, 
     12px 12px 0px #FFB650;
   }
+  .StartImage {
+    margin-top: -50px;}
 }
 .texto{
   color: #00A8F4;

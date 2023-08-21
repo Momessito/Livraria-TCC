@@ -56,7 +56,7 @@ function App() {
     </li> 
   </ul>
 </div>
-      <div className="hero bg-base-200 m-0">
+      <div className="hero m-0">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left">
       <h1 className="text-5xl font-bold">Login now!</h1>
@@ -76,7 +76,7 @@ function App() {
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="text" placeholder="password" className="input input-bordered"  value={password}
+          <input type="password" placeholder="password" className="input input-bordered"  value={password}
           onChange={(e) => setPassword(e.target.value)}/>
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
