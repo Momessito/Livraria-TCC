@@ -52,7 +52,6 @@ export default function MainHomePage() {
           </dl>
         </div>
       </div>
-      <hr style={{margin : '50px',marginTop : '0px',marginBottom : '10px'}}/>
-    </div>
+          </div>
   )
 }
