@@ -1,6 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&family=Calligraffitti&display=swap');
 
 .navbar {
-  background-color: rgba(255, 255, 255, 1);
   padding: 10px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.338);
   border-radius: 10px;
@@ -8,15 +8,23 @@
   margin-left: 10px;
   transform: translateY(10px);
   margin-bottom: 20px;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.342);
+}
+.inicial img{
+  margin-bottom: 40px;
+  margin: 20px;
+  z-index: -1;
 }
 body{
-  color: #1A237E;
 }
 .MainPage{
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.267);
 }
 .StartImage {
-  background-image: url(/src/imgs/bg-header.jpg);
+  background-image: url(/src/imgs/bg-header-removebg-preview.png);
   background-repeat: no-repeat;
   height: 100vh;
   width: 100%;
@@ -57,7 +65,7 @@ bottom: -100px;
   margin-top: 0px;
 }
 
-.hero{
+.StartContent{
   background-color: transparent;
   height:100vh;
 }
@@ -70,8 +78,18 @@ bottom: -100px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translateY(-100px);
+  margin-top: -20px;
 }
+.inicial button{
+  background-color: #00A8F4 !important;
+  border-color: #00A8F4 !important;
+  box-shadow: 0px 0px 5px #00A8F4;
+  color: white;
+}
+.inicial{
+  color: #016897 !important;
+}
+
 .MainPage h1{
   margin-top: 30px;
   font-size: 2.6rem;
@@ -96,5 +114,64 @@ img.imgmain{
   100%{
     transform: translateY(0px);
 
+  }
+}
+
+.MainPage{
+  color: #00A8F4;
+  background-color: rgb(248, 248, 248);
+}
+
+.inicial h1{
+  color: #00A8F4 !important;
+  text-shadow: 0px 0px 1px white;
+
+}
+
+.h1 {
+  font-family: 'Calligraffitti', cursive;
+  font-weight: 700;
+  font-size: 8rem;
+  text-shadow: -15px 5px 20px #ced0d3;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #4aa8d4;
+  text-shadow: 5px 5px 0px #2d66b6, 
+    10px 10px 0px #5086c1, 
+    15px 15px 0px  #6a9eda, 
+    20px 20px 0px #84b6f4, 
+    25px 25px 0px #b2dafa, 
+    30px 30px 0px #dcffff;
+    transition: 0.4s all linear;
+}
+.h1:hover{
+  text-shadow: 5px 5px 0px #2d66b6, 
+  10px 10px 0px #6868AC, 
+  15px 15px 0px  #EF5097, 
+  20px 20px 0px #FF80BF, 
+  25px 25px 0px #FFD662, 
+  30px 30px 0px #FFB650;
+}
+@media screen and (max-width: 768px) {
+  .MainPage{
+    margin: 0px;
+  }
+  .h1{
+    letter-spacing: 0.01em;
+    font-size: 3rem;
+    text-shadow: 2px 2px 0px #2d66b6, 
+    4px 4px 0px #5086c1, 
+    6px 6px 0px  #6a9eda, 
+    8px 8px 0px #84b6f4, 
+    10px 10px 0px #b2dafa, 
+    12px 12px 0px #dcffff;
+  }
+  .h1:hover{
+    text-shadow: 2px 2px 0px #2d66b6, 
+    4px 4px 0px #6868AC, 
+    6px 6px 0px  #EF5097, 
+    8px 8px 0px #FF80BF, 
+    10px 10px 0px #FFD662, 
+    12px 12px 0px #FFB650;
   }
 }

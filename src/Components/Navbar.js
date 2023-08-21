@@ -1,23 +1,45 @@
 import ThemeSwitcher from "./Theme";
+import logo from "../imgs/Didactoicon.png"
+import { auth } from "../BackEnd/Firebase"; // Substitua pelo caminho correto para o arquivo Firebase.js
+import { useEffect, useState } from "react";
 
 function NavbarMain(){
+
+  
+  const sair = () => {
+    auth.signOut();
+    localStorage.removeItem("userEmail");
+  };
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
     return(
-<div class="navbar bg-base-100">
+<div class="navbar backdrop-filter backdrop-blur-lg bg-opacity-30 ">
   <div class="navbar-start">
-    <div class="dropdown z-50">
+    <div class="dropdown z-10000">
       <label tabindex="0" class="btn btn-ghost btn-circle">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
       </label>
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li><a>Home</a></li>
         <li><a>Cadastrar Livro</a></li>
-        <li><a>Login</a></li>
-        <li><a>Cadastro</a></li>
       </ul>
     </div>
   </div>
   <div class="navbar-center">
-    <a class="btn btn-ghost normal-case text-xl hover:bg-cyan-700" href="/"><img className="w-14" style={{transform : 'scale(2)'}} src="https://i.ibb.co/sPX2dSh/Didactoicon.png"/></a>
+    <a class="btn btn-ghost normal-case text-xl  hover:scale-110" href="/"><img className="w-14	" style={{transform : 'scale(2)'}} src={logo}/></a>
   </div>
   <div class="navbar-end">
     <button class="btn btn-ghost btn-circle">
@@ -28,14 +50,42 @@ function NavbarMain(){
     </button>
       <ThemeSwitcher />
 
-    <button className="btn btn-ghost btn-circle">
-    <div className="avatar placeholder">
+      {isLoggedIn ? (
+        // Mostrar configurações e cadastrar quando o usuário estiver logado
+              <div class="dropdown z-1000 dropdown-end">
+
+      <label tabindex="0" class="btn btn-ghost btn-circle">
+      <div className="avatar placeholder">
       <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
         <span className="text-1xl">D</span>
       </div>
     </div>
-</button>
-  </div>
+      </label>
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <li ><a>Configurações</a></li>
+          <li ><a>Registrar</a></li>
+          <li  onClick={sair}><a>Sair</a></li>
+          </ul>
+          </div>
+      ) : (
+        // Mostrar login e registro quando o usuário não estiver logado
+        <div class="dropdown z-1000 dropdown-end">
+
+        <label tabindex="0" class="btn btn-ghost btn-circle">
+        <div className="avatar placeholder">
+        <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+          <span className="text-1xl">D</span>
+        </div>
+      </div>
+        </label>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+          <li  ><a>Login/Registro</a></li>
+            </ul>
+            </div>
+      )}
+    </div>
+
+
 </div>
     );
 }

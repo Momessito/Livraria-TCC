@@ -3,6 +3,7 @@ import MainHomePage from "./Components/MainHomePage";
 import Hero from "./Components/Hero";
 
 import Alert from "./Components/Alert";
+import Team from "./Components/Team";
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
         </div>
       </div>
       <MainHomePage />
+      <Team />
       <Alert text='Bem vindo ao Didacto!' />
     </div>
   );

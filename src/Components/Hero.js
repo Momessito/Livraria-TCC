@@ -1,16 +1,26 @@
-import book from "../book.svg"
+import book from "../imgs/main.png"
+import { scroller } from 'react-scroll';
 
 
 function Hero() {
-    return ( <div className="hero">
+
+  const scrollToMainHomePage = () => {
+    scroller.scrollTo('mainHomePage', {
+      duration: 800,
+      delay: 0,
+      smooth: 'easeInOutQuart'
+    });
+  };
+
+    return ( <div className="hero inicial">
     <div className="hero-content flex-col lg:flex-row-reverse hero">
-<img src={book} className="imgmain" />
+<img src={book} className="imgmain z-0" />
 
       <div>
         
-        <h1 className="text-5xl font-bold tooltip tooltip-open" data-tip="Cadastrar!">Didacto</h1>
-        <p className="py-6 ">O cadastro e controle direto da entrada e saida de livros didaticos para sua instituição de ensino publica e privada.</p>
-        <button className="btn btn-primary" style={{backgroundColor : '#1A237E',borderColor : '#1A237E'}}>Começar Agora</button>
+      <div className="h1">Didacto</div>
+        <p className="py-6 text-gray-600 font-semibold">O cadastro e controle direto da entrada e saida de livros didaticos para sua instituição de ensino publica e privada.</p>
+        <button className="btn"onClick={scrollToMainHomePage}>Começar Agora</button>
       </div>
     </div>
   </div> );

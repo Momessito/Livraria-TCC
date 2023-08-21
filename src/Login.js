@@ -8,8 +8,36 @@ import InputPadrão from "./Components/InputPrimario";
 import Hero from "./Components/Hero";
 import book from "./book.svg"
 import AuthComponent from "./Components/authComponet";
+import { useState } from "react";
+import { auth } from "./BackEnd/Firebase"; // Substitua pelo caminho correto para o arquivo Firebase.js
+
 
 function App() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      console.log("Login bem-sucedido!");
+      localStorage.setItem("userEmail", email);
+    } catch (error) {
+      console.error("Erro ao fazer login: ", error);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    const provider = new auth.GoogleAuthProvider();
+    try {
+      await auth.signInWithPopup(provider);
+      console.log("Login com Google bem-sucedido!");
+    } catch (error) {
+      console.error("Erro ao fazer login com o Google: ", error);
+    }
+  };
+
   return (
     <div className="App">
       <div className="text-sm breadcrumbs m-10">
@@ -40,20 +68,24 @@ function App() {
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="text" placeholder="email" className="input input-bordered" />
+          <input type="text" placeholder="email" className="input input-bordered"           value={email}
+          onChange={(e) => setEmail(e.target.value)}
+ />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="text" placeholder="password" className="input input-bordered" />
+          <input type="text" placeholder="password" className="input input-bordered"  value={password}
+          onChange={(e) => setPassword(e.target.value)}/>
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button onClick={handleLogin} className="btn btn-primary">Login</button>
         </div>
+        <button>Login com Google</button>
       </div>
     </div>
   </div>
