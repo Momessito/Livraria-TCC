@@ -11,6 +11,12 @@ const people = [
       imageUrl:
         'https://i.ibb.co/995Y7ZM/Whats-App-Image-2023-08-21-at-13-21-42.jpg',
     },
+    {
+      name: 'Guilherme Sales',
+      role: 'DataBase Developer',
+      imageUrl:
+        'https://i.ibb.co/42hcjZW/Whats-App-Image-2023-08-21-at-19-28-33.jpg',
+    },
     
   ]
   

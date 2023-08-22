@@ -138,6 +138,9 @@ img.imgmain{
   letter-spacing: 0.02em;
   text-align: center;
   color: #4aa8d4;
+  cursor: pointer;
+  user-select: none;
+
   text-shadow: 5px 5px 0px #2d66b6, 
     10px 10px 0px #5086c1, 
     15px 15px 0px  #6a9eda, 
@@ -153,6 +156,10 @@ img.imgmain{
   20px 20px 0px #FF80BF, 
   25px 25px 0px #FFD662, 
   30px 30px 0px #FFB650;
+}
+
+.h1:active{
+  transform: scale(1.02);
 }
 @media screen and (max-width: 768px) {
   .MainPage{
