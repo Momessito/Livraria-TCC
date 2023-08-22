@@ -17,6 +17,12 @@ const people = [
       imageUrl:
         'https://i.ibb.co/42hcjZW/Whats-App-Image-2023-08-21-at-19-28-33.jpg',
     },
+    {
+      name: 'Carleandro Gomes',
+      role: 'Designer / FrontEnd Developer',
+      imageUrl:
+        'https://i.ibb.co/BthTLXb/Whats-App-Image-2023-08-22-at-19-41-15.jpg',
+    },
     
   ]
   
