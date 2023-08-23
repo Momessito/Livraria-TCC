@@ -23,6 +23,12 @@ const people = [
       imageUrl:
         'https://i.ibb.co/BthTLXb/Whats-App-Image-2023-08-22-at-19-41-15.jpg',
     },
+    {
+      name: 'Fabiana Bonifacio',
+      role: 'FullStack Developer',
+      imageUrl:
+        'https://i.ibb.co/HF4rF9x/Whats-App-Image-2023-08-22-at-21-37-32.jpg',
+    },
     
   ]
   
