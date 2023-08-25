@@ -16,3 +16,11 @@
         display: none;
     }
 }
+@media (max-width: 425px){
+    .hero div button{
+      display: block;
+    }
+    .hero div p{
+        display: block;
+    }
+}
