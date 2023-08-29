@@ -99,25 +99,40 @@ Adicionar    </button>
       <th>
         <button
           className="btn btn-ghost btn-xs"
-          onClick={() => {
-            const newTitle = prompt('Edit book title:', book.title);
+          onClick={(data) => {
+            console.log();
+            data.target.parentNode.parentNode.querySelector('.card-table').style.display = 'flex'
+            /*const newTitle = prompt('Edit book title:', book.title);
             if (newTitle !== null) {
               const updatedBooks = books.map((b) =>
                 b.id === book.id ? { ...b, title: newTitle } : b
               );
               setBooks(updatedBooks);
-            }
+            }*/
           }}
         >
           Editar
         </button>
       </th>
       <th>
-        <button
-          className="btn btn-ghost btn-xs"
+
+
+      </th>
+      <div className="card-table" key={book.id}>
+          <div className="card w-96 bg-base-100 shadow-xl">
+            <p className='X' onClick={function fechar(data){data.target.parentNode.parentNode.style.display = 'none'}}  >X</p>
+  <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+  <div className="card-body">
+    <h2 className="card-title">{book.title}</h2>
+    <p>{book.author}</p>
+    <div className="card-actions justify-end">
+      <button className="btn btn-info">Editar</button>
+      <button 
+          className="btn btn-error"
           onClick={() => {
+            
             const shouldDelete = window.confirm(
-              'Are you sure you want to delete this book?'
+              'Tem certeza que quer excluir esse livro?'
             );
             if (shouldDelete) {
               const updatedBooks = books.filter((b) => b.id !== book.id);
@@ -127,7 +142,10 @@ Adicionar    </button>
         >
           Excluir
         </button>
-      </th>
+    </div>
+  </div>
+</div>
+        </div>
     </tr>
   ))}
 </tbody>

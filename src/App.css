@@ -193,3 +193,22 @@ img.imgmain{
 footer{
   background-color: #036b9b;
 }
+
+.card-table{
+  position:fixed;
+  left: 0%;
+  top: 0%;
+  background-color: rgba(0, 0, 0, 0.112);
+  height: 100vh;
+  z-index: 100;
+  width: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.X{
+  margin: 10px;
+  color: red;
+  font-weight: bolder;
+  cursor: pointer;
+}
