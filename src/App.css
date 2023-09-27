@@ -211,4 +211,18 @@ footer{
   color: rgb(167, 80, 80);
   font-weight: bolder;
   cursor: pointer;
+<<<<<<< HEAD
+=======
+}
+
+.table-e{
+  margin-top: 15%;
+}
+
+.table-e h2{
+text-align: center;
+}
+.table-e p{
+text-align: center;
+>>>>>>> 14b63eb (table front)
 }
