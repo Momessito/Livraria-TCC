@@ -22,6 +22,16 @@ export default function Table() {
     setSelectAll(!selectAll);
   };
 
+  const storedEmail = localStorage.getItem('userEmail');
+  console.log(storedEmail);
+
+  if (storedEmail == undefined | storedEmail == null | storedEmail == NaN){
+    console.log('Permissão não concedida');
+
+  }else{
+    
+  }
+
   return (
     <div className="overflow-x-auto tablePage">
       {/* ... Breadcrumbs ... */}
@@ -151,6 +161,7 @@ Adicionar    </button>
 </tbody>
 
         </table>
+
       </div>
 
 
