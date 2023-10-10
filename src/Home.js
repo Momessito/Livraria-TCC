@@ -4,10 +4,7 @@ import Hero from "./Components/Hero";
 import Footer from './Components/Footer'
 import Alert from "./Components/Alert";
 import Team from "./Components/Team";
-<<<<<<< HEAD
-=======
 import TableExample from "./Components/TableExample";
->>>>>>> 14b63eb (table front)
 
 function Home() {
   return (
@@ -17,10 +14,8 @@ function Home() {
           <Hero />
         </div>
       </div>
-<<<<<<< HEAD
-=======
+
       <TableExample />
->>>>>>> 14b63eb (table front)
       <MainHomePage />
       <Team />
       <Footer />
