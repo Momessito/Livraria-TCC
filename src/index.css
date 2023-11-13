@@ -1,21 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@media (max-width: 1405px) and (min-width: 425px) {
-    .hero > * {
-        width: 80% !important; /* Reduz a largura do elemento */
-        max-width: 100% !important; /* Garante que o elemento não exceda a largura da tela */
-    }
-}
-@media (max-width: 1020px){
-    .hero div button{
-      display: none;
-    }
-    .hero div p{
-        display: none;
-    }
-}
 @media (max-width: 425px){
     .hero div button{
       display: block;
@@ -23,4 +8,22 @@
     .hero div p{
         display: block;
     }
+ 
+    .hero-content{
+        margin-top: 10px;
+    }
+    .inicial img{
+        display: none !important;
+    }
+    .hero-content{
+        margin-top: 100px;
+    }
+}
+@media (max-width: 1405px) and (min-width: 425px) {
+    .hero > * {
+        width: 80% !important; /* Reduz a largura do elemento */
+        max-width: 100% !important; /* Garante que o elemento não exceda a largura da tela */
+    }
+
+
 }

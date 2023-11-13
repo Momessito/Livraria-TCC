@@ -26,7 +26,7 @@ function NavbarMain(){
   }, []);
 
     return(
-<div class="navbar backdrop-filter backdrop-blur-lg bg-opacity-30 ">
+<div class="navbar backdrop-filter backdrop-blur-lg bg-opacity-30 " id="navbar">
   <div class="navbar-start">
     <div class="dropdown z-10000">
       <label tabindex="0" class="btn btn-ghost btn-circle">

@@ -1,5 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&family=Calligraffitti&display=swap');
 
+
+.fadeInsti{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.heroinst{
+  background-color: white;
+  z-index: 99;
+  border-radius: 10px;
+  width: 80%;
+  overflow: hidden;
+}
+.fade{
+  z-index: -1;
+height: 30vh;
+width: 100%;
+position: absolute;
+top: 0;
+background: rgb(0,140,249);
+background: linear-gradient(0deg, rgba(0,140,249,0) 0%, rgba(0,140,249,1) 100%);
+left: 0;
+}
 .navbar {
   padding: 10px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.338);
@@ -13,7 +37,11 @@
   top: 0;
   background-color: rgba(255, 255, 255, 0.342);
 }
+.dados{
+  width: 100%;
+}
 .inicial img{
+  display: block;
   margin-bottom: 40px;
   margin: 20px;
   z-index: -1;
@@ -148,6 +176,25 @@ img.imgmain{
     25px 25px 0px #b2dafa, 
     30px 30px 0px #dcffff;
     transition: 0.4s all linear;
+}
+.actions{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 65%;
+  margin-top: 60px;
+}
+.badge{
+  white-space: nowrap;
+  overflow: hidden;
+}
+.h2 {
+  font-weight: 700;
+  font-size: 4rem;
+  text-shadow: -15px 5px 20px #ced0d3;
+  color: #042231;
+  cursor: pointer;
+  user-select: none;
 }
 .h1:hover{
   text-shadow: 5px 5px 0px #2d66b6, 
