@@ -59,10 +59,13 @@ function App() {
       <div className="hero m-0">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold">Login now!</h1>
-      <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+      <h1 className="text-5xl font-bold">Entre agora!</h1>
+      <p className="py-6">Peça para sua instituição entrar em contato para criar uma conta agora mesmo!</p>
     </div>
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-200">
+    <div class="absolute top-0 -left-4 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob z-index-1" style={{zIndex : '-1'}}></div>
+    <div class="absolute top-0 -right-4 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" style={{zIndex : '-1'}}></div>
+    <div class="absolute -bottom-32 left-20 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000" style={{zIndex : '-1'}}></div>
       <div className="card-body">
         <div className="form-control">
           <label className="label">
@@ -79,13 +82,11 @@ function App() {
           <input type="password" placeholder="password" className="input input-bordered"  value={password}
           onChange={(e) => setPassword(e.target.value)}/>
           <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>
         </div>
         <div className="form-control mt-6">
           <button onClick={handleLogin} className="btn btn-primary">Login</button>
         </div>
-        <button>Login com Google</button>
       </div>
     </div>
   </div>
