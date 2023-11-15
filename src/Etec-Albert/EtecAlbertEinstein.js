@@ -1,4 +1,5 @@
 import './instituicao.css'
+import { Link } from "react-router-dom";
 
 function EtecAlbertEinstein(){
 
@@ -16,7 +17,7 @@ function EtecAlbertEinstein(){
 <p className='text-lg font-semibold leading-6 texto'>Selecione a atividade desejada:</p>
 <br />
 <div className="join join-horizontal lg:join-horizontal">
-  <button className="btn join-item">Cadastrar</button>
+  <Link to="/CadastroLi" className="btn join-item">Cadastrar</Link>
   <button className="btn join-item">Consultar</button>
   <button className="btn join-item">Devolver</button>
 </div>
