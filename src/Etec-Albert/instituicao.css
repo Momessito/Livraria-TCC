@@ -1,0 +1,12 @@
+.li{
+    opacity: 0.5;
+    display: block;
+    justify-content: bottom;
+    align-items: bottom;
+    width: 50%;
+  margin-left: 100px;
+}
+
+.num{
+    text-decoration: none;
+}
