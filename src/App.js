@@ -5,6 +5,7 @@ import Login from './Login';
 import Table from './Table';
 import BasesDados from './Dados';
 import EtecAlbertEinstein from './Etec-Albert/EtecAlbertEinstein';
+import CadL from './Etec-Albert/cadastroL';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route path="/BasesDados" element={<BasesDados />} />
         <Route path="/Instituicao/Etec" element={<EtecAlbertEinstein />} />
         <Route path="/Livros" element={<Table />} />
+        <Route path="/CadastroLi" element={<CadL />} />
+
       </Routes>
     </Router>
   );
