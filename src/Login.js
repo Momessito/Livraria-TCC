@@ -23,8 +23,10 @@ function App() {
       await auth.signInWithEmailAndPassword(email, password);
       console.log("Login bem-sucedido!");
       localStorage.setItem("userEmail", email);
+      window.location.href = "https://livraria-tcc-hyeh.vercel.app/";
     } catch (error) {
       console.error("Erro ao fazer login: ", error);
+      document.getElementById('my_modal_4').showModal();
     }
   };
 
@@ -85,7 +87,19 @@ function App() {
           </label>
         </div>
         <div className="form-control mt-6">
-          <button onClick={handleLogin} className="btn btn-primary">Login</button>
+          <button onClick={handleLogin}  className="btn btn-primary">Login</button>
+            <dialog id="my_modal_4" className="modal">
+              <div className="modal-box w-11/12 max-w-5xl">
+                <h3 className="font-bold text-lg">Erro no Login!</h3>
+                <p className="py-4">Seu email ou senha podem estar incorretos, tente novamente.</p>
+                <div className="modal-action">
+                  <form method="dialog">
+                    {/* if there is a button, it will close the modal */}
+                    <button className="btn">Fechar</button>
+                  </form>
+                </div>
+              </div>
+            </dialog>
         </div>
       </div>
     </div>
