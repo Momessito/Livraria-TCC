@@ -18,15 +18,22 @@ function NavbarMain(){
   let cor = '#' + parseInt((Math.random() * 0xFFFFFF))
   .toString(16)
   .padStart(6, '0');
-  console.log(cor)
-  let corPerfil = document.getElementById('corPerfil')
-  corPerfil.style.backgroundColor = cor
-  }
+  let corPerfil = document.getElementById('corPerfil');
+  if (corPerfil) {
+    corPerfil.style.backgroundColor = cor;
+  } }
+
+  // Recupera o e-mail do localStorage
+const userEmail = localStorage.getItem("userEmail");
+
+// Obtém a primeira letra do e-mail (em maiúscula)
+const primeiraLetra = userEmail ? userEmail.charAt(0).toUpperCase() : '';
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    GerarCor()
+
+    GerarCor();
 
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -40,9 +47,10 @@ function NavbarMain(){
     });
 
     return () => unsubscribe();
-  }, []);
+  });
 
     return(
+      
 <div class="navbar backdrop-filter backdrop-blur-lg bg-opacity-30 " id="navbar">
   <div class="navbar-start">
     <div class="dropdown z-10000">
@@ -71,8 +79,8 @@ function NavbarMain(){
 
       <label tabindex="0" class="btn btn-ghost btn-circle">
       <div className="avatar placeholder">
-      <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-        <span id="corPerfil" className="text-1xl">D</span>
+      <div id="corPerfil"className="bg-neutral-focus text-neutral-content rounded-full w-8">
+        <span  className="text-1xl text-white texto-sombra">{primeiraLetra}</span>
       </div>
     </div>
       </label>

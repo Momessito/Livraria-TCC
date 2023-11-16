@@ -23,7 +23,7 @@ function App() {
       await auth.signInWithEmailAndPassword(email, password);
       console.log("Login bem-sucedido!");
       localStorage.setItem("userEmail", email);
-      window.location.href = "https://livraria-tcc-hyeh.vercel.app/";
+      window.location.href = "/";
     } catch (error) {
       console.error("Erro ao fazer login: ", error);
       document.getElementById('my_modal_4').showModal();

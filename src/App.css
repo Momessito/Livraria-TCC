@@ -271,3 +271,7 @@ text-align: center;
 text-align: center;
 }
 
+.texto-sombra{
+  text-shadow: 0px 0px 5px black;
+}
+
