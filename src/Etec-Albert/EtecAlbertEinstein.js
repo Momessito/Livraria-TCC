@@ -1,14 +1,35 @@
-import ValidadorLogin from '../BackEnd/ValidadorLogin';
+import { useState } from 'react';
 import './instituicao.css'
 import { Link } from "react-router-dom";
+import { useEffect } from 'react';
+import { auth } from '../BackEnd/Firebase';
 
-<ValidadorLogin/>
 
 function EtecAlbertEinstein(){
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+        console.log('logado')
+      } else {
+        setIsLoggedIn(false);
+        console.log('deslogado');
+        window.location.href = '/';
+      }
+    });
+
+    return () => unsubscribe();
+  });
+
 
     return(
-        <div className='fadeInsti'>
+      
+        <div className='fadeInsti' >
+          
             <div className='fade'></div>
             <div className='hero bg-white flex  heroinst justify-around	 p-5'>
 <div ><h1 className='py-6 text-base font-semibold leading-7 text-gray-900'>Bem vindo de volta , <h1 className='text-lg font-semibold leading-6 texto'>{localStorage.getItem('userEmail')}</h1></h1></div>

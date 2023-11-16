@@ -1,14 +1,28 @@
 import {React,useEffect, useState } from "react";
-import {
-  getLivros,
-} from "./BackEnd/Firebase";
+import { auth, getLivros } from "./BackEnd/Firebase";
 import Alert from './Components/Alert';
+
 
 export default function Table() {
   const [selectAll, setSelectAll] = useState(false);
 const [books, setbooks] = useState([]);
 
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 useEffect(() => {
+  
+  const unsubscribe = auth.onAuthStateChanged((user) => {
+    if (user) {
+      setIsLoggedIn(true);
+      console.log('logado')
+    } else {
+      setIsLoggedIn(false);
+      console.log('deslogado');
+      window.location.href = '/';
+    }
+  });
+
+  return () => unsubscribe();
   const fetchData = async () => {
     try {
       // Consultar livros

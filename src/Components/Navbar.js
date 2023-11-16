@@ -29,6 +29,8 @@ const userEmail = localStorage.getItem("userEmail");
 // Obtém a primeira letra do e-mail (em maiúscula)
 const primeiraLetra = userEmail ? userEmail.charAt(0).toUpperCase() : '';
 
+console.log("Primeira letra do e-mail:", primeiraLetra);
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const primeiraLetra = userEmail ? userEmail.charAt(0).toUpperCase() : '';
       } else {
         setIsLoggedIn(false);
         console.log('deslogado')
-
+        
       }
     });
 
@@ -97,7 +99,7 @@ const primeiraLetra = userEmail ? userEmail.charAt(0).toUpperCase() : '';
         <label tabindex="0" class="btn btn-ghost btn-circle">
         <div className="avatar placeholder">
         <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-          <img src="https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png"></img>
+          <img src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"></img>
         </div>
       </div>
         </label>
