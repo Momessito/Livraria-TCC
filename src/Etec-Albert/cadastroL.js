@@ -1,27 +1,46 @@
-import { useEffect } from "react";
-import { auth } from "../BackEnd/Firebase";
-import { useState } from "react";
+import { Link } from "react-router-dom";
+import { addLivro, auth } from "../BackEnd/Firebase";
+import { useEffect, useState } from "react";
 
 
-function CadL(){
+  function CadL(){
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
   
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          setIsLoggedIn(true);
+          console.log('logado')
+        } else {
+          setIsLoggedIn(false);
+          console.log('deslogado');
+          window.location.href = '/';
+        }
+      })
+      return () => unsubscribe();
 
-  useEffect(() => {
+      });
+  
+    
+      
 
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setIsLoggedIn(true);
-        console.log('logado')
-      } else {
-        setIsLoggedIn(false);
-        console.log('deslogado');
-        window.location.href = '/';
-      }
-    });
+    function RegistrarLivro(){
+      let nome = document.getElementById('nomeR').value
+      let editora = document.getElementById('editoraR').value
+      let imagem = document.getElementById('imagemR').value
+      let materia = document.getElementById('materiaR').value
+      let validade = document.getElementById('validadeR').value
+      let quantidade = document.getElementById('quantidadeR').value
 
-    return () => unsubscribe();
-  });
+    addLivro(nome,
+      editora,
+      imagem,
+      materia,
+      quantidade,
+      validade);
+    }
 
     return(
         <div className="App">
@@ -78,7 +97,7 @@ function CadL(){
       </div>
 
         
-
+      
       <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-200">
       <div class="absolute top-0 -left-4 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob z-index-1" style={{zIndex : '-1'}}></div>
       <div class="absolute top-0 -right-4 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" style={{zIndex : '-1'}}></div>
@@ -92,27 +111,27 @@ function CadL(){
             <label className="label">
               <span className="label-text">Nome:  </span>
             </label>
-              <input type="text" className="input input-sm input-bordered"/>
+              <input id="nomeR" type="text" className="input input-sm input-bordered"/>
           </div>
 
           <div className="form-control">
             <label className="label">
               <span className="label-text">Editora:  </span>
             </label>
-              <input type="text" className="input input-sm input-bordered"/>
+              <input type="text" id="editoraR" className="input input-sm input-bordered"/>
           </div>
 
           <div className="form-control">
             <label className="label">
               <span className="label-text">Imagem:  </span>
             </label>
-              <input type="text" placeholder='Mande somente o Url da imagem' className="input input-sm input-bordered"/>
+              <input id="imagemR" type="text" placeholder='Mande somente o Url da imagem' className="input input-sm input-bordered"/>
           </div>
 <div>
           <label className="label">
               <span className="label-text"> Materia: </span>
             </label>
-          <select className="select select-bordered  select-sm w-full max-w-xs">
+          <select id="materiaR" className="select select-bordered  select-sm w-full max-w-xs">
   <option disabled selected> Selecionar</option>
   <option>Matemática</option>
   <option>Ciências</option>
@@ -127,7 +146,7 @@ function CadL(){
             <label className="label">
               <span className="label-text">Validade: </span>
             </label>
-            <input type="date" placeholder="password" className="input  input-sm input-bordered"/>
+            <input id="validadeR" type="date" placeholder="password" className="input  input-sm input-bordered"/>
             <label className="label">
             </label>
           </div>
@@ -137,14 +156,14 @@ function CadL(){
             <label className="label">
               <span className="label-text">Quantidade: </span>
             </label>
-            <input type="number"  class="num" className=" input-xs input input-sm input-bordered"/>
+            <input id="quantidadeR" type="number"  class="num" className=" input-xs input input-sm input-bordered"/>
             <label className="label">
             </label>
           </div>
 
 
           <div className="form-control mt-6">
-            <button  className="btn btn-primary" style={{ backgroundColor: 'rgb(0, 168, 244)' }}>Cadastrar</button>
+            <button  className="btn btn-primary" style={{ backgroundColor: 'rgb(0, 168, 244)' }} onClick={RegistrarLivro}>Cadastrar</button>
           </div>
 
         </div>
@@ -154,6 +173,8 @@ function CadL(){
       </div>
   
   );
+
+
 }
 
 export default CadL;

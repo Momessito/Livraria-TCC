@@ -1,30 +1,48 @@
-import { useState } from 'react';
 import './instituicao.css'
 import { Link } from "react-router-dom";
-import { useEffect } from 'react';
 import { auth } from '../BackEnd/Firebase';
 
+import { useEffect, useState } from 'react';
+import { getLivros, getProfessores } from '../BackEnd/Firebase';
 
 function EtecAlbertEinstein(){
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [books, setbooks] = useState([]);
+  const [profs, setprofs] = useState([]);
 
   useEffect(() => {
-
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setIsLoggedIn(true);
-        console.log('logado')
-      } else {
-        setIsLoggedIn(false);
-        console.log('deslogado');
-        window.location.href = '/';
+    const fetchData = async () => {
+      try {
+        // Consultar livros
+        const livrosData = await getLivros();
+        const ProfessoresData = await getProfessores();
+        console.log("Dados de Livros:", livrosData);
+        setprofs(ProfessoresData)
+        setbooks(livrosData);
+      } catch (error) {
+        console.error("Erro ao buscar dados:", error);
       }
-    });
+    };
+  
+    fetchData();
+  }, []);
+const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    return () => unsubscribe();
+useEffect(() => {
+
+  const unsubscribe = auth.onAuthStateChanged((user) => {
+    if (user) {
+      setIsLoggedIn(true);
+      console.log('logado')
+    } else {
+      setIsLoggedIn(false);
+      console.log('deslogado');
+      window.location.href = '/';
+    }
   });
 
+  return () => unsubscribe();
+});
 
     return(
       
@@ -57,16 +75,15 @@ function EtecAlbertEinstein(){
 <br />
 <div className="stats stats-vertical lg:stats-horizontal shadow">
   
-  <div className="stat">
-    <div className="stat-title">Downloads</div>
-    <div className="stat-value">31K</div>
-    <div className="stat-desc">Jan 1st - Feb 1st</div>
-  </div>
+<div className="stat">
+  <div className="stat-title">Livros Cadastrados</div>
+  <div className="stat-value">{books.length}</div>
+</div>
+
   
   <div className="stat">
-    <div className="stat-title">New Users</div>
-    <div className="stat-value">4,200</div>
-    <div className="stat-desc">↗︎ 400 (22%)</div>
+    <div className="stat-title">Professores</div>
+    <div className="stat-value">{profs.length}</div>
   </div>
   
   <div className="stat">

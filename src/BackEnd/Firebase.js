@@ -77,11 +77,18 @@ export const addProfessor = async (nome, disciplina, instituicaoId) => {
 
 
 // Funções CRUD para Livros
-export const addLivro = async (autor, titulo, quantidade, alunos) => {
+export const addLivro = async (nome,
+  editora,
+  imagem,
+  materia,
+  quantidade,
+  validade) => {
   await db.collection("livros").add({
-    autor,
-    titulo,
+    nome,
+    editora,
+    imagem,
+    materia,
     quantidade,
-    alunos,
+    validade,
   });
 };

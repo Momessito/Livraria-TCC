@@ -30,16 +30,6 @@ function App() {
     }
   };
 
-  const handleGoogleLogin = async () => {
-    const provider = new auth.GoogleAuthProvider();
-    try {
-      await auth.signInWithPopup(provider);
-      console.log("Login com Google bem-sucedido!");
-    } catch (error) {
-      console.error("Erro ao fazer login com o Google: ", error);
-    }
-  };
-
   return (
     <div className="App">
       <div className="text-sm breadcrumbs m-10">

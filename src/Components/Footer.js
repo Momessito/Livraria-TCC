@@ -4,6 +4,7 @@ import {
   getProfessores,
   getLivros,
 } from "../BackEnd/Firebase";
+import logo from '../imgs/Didactoicon.png'
 
 const Footer = () => {
   const [instituicoes, setInstituicoes] = useState([]);
@@ -35,28 +36,13 @@ const Footer = () => {
     fetchData();
   }, []);
   return (
-    <div>
-      <h2>Instituições</h2>
-      <ul>
-        {instituicoes.map((instituicao) => (
-          <li key={instituicao.id}>{instituicao.nome}</li>
-        ))}
-      </ul>
+<footer className="footer items-center p-4 bg-neutral text-neutral-content" style={{ backgroundColor: 'rgb(0, 168, 244)' }}>
+  <aside className="items-center grid-flow-col">
+    <img src={logo} width='80px'/>
+    <p className="text-white">Copyright © 2023 - Todos Os Direitos Reservados</p>
+  </aside> 
 
-      <h2>Professores</h2>
-      <ul>
-        {professores.map((professor) => (
-          <li key={professor.id}>{professor.nome}</li>
-        ))}
-      </ul>
-
-      <h2>Livros</h2>
-      <ul>
-        {livros.map((livro) => (
-          <li key={livro.id}>{livro.titulo}</li>
-        ))}
-      </ul>
-    </div>
+</footer>
   );
 };
 
