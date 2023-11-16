@@ -2,6 +2,7 @@ import ThemeSwitcher from "./Theme";
 import logo from "../imgs/Didactoicon.png"
 import { auth } from "../BackEnd/Firebase"; // Substitua pelo caminho correto para o arquivo Firebase.js
 import { useEffect, useState } from "react";
+import { get } from "react-scroll/modules/mixins/scroller";
 
 function NavbarMain(){
 
@@ -11,21 +12,45 @@ function NavbarMain(){
     localStorage.removeItem("userEmail");
   };
 
+  function GerarCor()
+  {
+    
+  let cor = '#' + parseInt((Math.random() * 0xFFFFFF))
+  .toString(16)
+  .padStart(6, '0');
+  let corPerfil = document.getElementById('corPerfil');
+  if (corPerfil) {
+    corPerfil.style.backgroundColor = cor;
+  } }
+
+  // Recupera o e-mail do localStorage
+const userEmail = localStorage.getItem("userEmail");
+
+// Obtém a primeira letra do e-mail (em maiúscula)
+const primeiraLetra = userEmail ? userEmail.charAt(0).toUpperCase() : '';
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
+
+    GerarCor();
+
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setIsLoggedIn(true);
+        console.log('logado')
       } else {
         setIsLoggedIn(false);
+        console.log('deslogado')
+
       }
     });
 
     return () => unsubscribe();
-  }, []);
+  });
 
     return(
+      
 <div class="navbar backdrop-filter backdrop-blur-lg bg-opacity-30 " id="navbar">
   <div class="navbar-start">
     <div class="dropdown z-10000">
@@ -48,14 +73,14 @@ function NavbarMain(){
         <span class="badge badge-xs badge-primary indicator-item"></span>
       </div>
     </button>
-      {isLoggedIn ? (
+    {isLoggedIn ? (
         // Mostrar configurações e cadastrar quando o usuário estiver logado
               <div class="dropdown z-1000 dropdown-end">
 
       <label tabindex="0" class="btn btn-ghost btn-circle">
       <div className="avatar placeholder">
-      <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-        <span className="text-1xl">D</span>
+      <div id="corPerfil"className="bg-neutral-focus text-neutral-content rounded-full w-8">
+        <span  className="text-1xl text-white texto-sombra">{primeiraLetra}</span>
       </div>
     </div>
       </label>
@@ -72,7 +97,7 @@ function NavbarMain(){
         <label tabindex="0" class="btn btn-ghost btn-circle">
         <div className="avatar placeholder">
         <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-          <span className="text-1xl">D</span>
+          <img src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"></img>
         </div>
       </div>
         </label>
