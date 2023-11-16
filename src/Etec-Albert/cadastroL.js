@@ -146,7 +146,7 @@ import { useEffect, useState } from "react";
             <label className="label">
               <span className="label-text">Validade: </span>
             </label>
-            <input id="validadeR" type="date" placeholder="password" className="input  input-sm input-bordered"/>
+            <input id="validadeR" type="text" placeholder="" className="input  input-sm input-bordered"/>
             <label className="label">
             </label>
           </div>

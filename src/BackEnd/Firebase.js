@@ -17,7 +17,9 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore(); // Obtenha uma referência para o Firestore
 
 export const auth = firebase.auth();
-export { db, firebase };
+export {db};
+export default {firebase };
+
 
 // Funções CRUD para Instituições
 export const addInstituicao = async (instituicaoId, Password) => {
