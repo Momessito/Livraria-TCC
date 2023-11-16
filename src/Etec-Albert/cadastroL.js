@@ -1,4 +1,28 @@
+import { useEffect } from "react";
+import { auth } from "../BackEnd/Firebase";
+import { useState } from "react";
+
+
 function CadL(){
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+        console.log('logado')
+      } else {
+        setIsLoggedIn(false);
+        console.log('deslogado');
+        window.location.href = '/';
+      }
+    });
+
+    return () => unsubscribe();
+  });
+
     return(
         <div className="App">
  

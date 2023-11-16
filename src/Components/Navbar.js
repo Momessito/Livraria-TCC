@@ -29,6 +29,8 @@ const userEmail = localStorage.getItem("userEmail");
 // Obtém a primeira letra do e-mail (em maiúscula)
 const primeiraLetra = userEmail ? userEmail.charAt(0).toUpperCase() : '';
 
+console.log("Primeira letra do e-mail:", primeiraLetra);
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const primeiraLetra = userEmail ? userEmail.charAt(0).toUpperCase() : '';
       } else {
         setIsLoggedIn(false);
         console.log('deslogado')
-
+        
       }
     });
 
