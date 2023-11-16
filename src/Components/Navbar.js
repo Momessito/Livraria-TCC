@@ -97,7 +97,7 @@ const primeiraLetra = userEmail ? userEmail.charAt(0).toUpperCase() : '';
         <label tabindex="0" class="btn btn-ghost btn-circle">
         <div className="avatar placeholder">
         <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-          <img src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"></img>
+          <img src="https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png"></img>
         </div>
       </div>
         </label>
