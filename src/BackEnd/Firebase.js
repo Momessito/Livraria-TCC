@@ -18,7 +18,7 @@ const db = firebase.firestore(); // Obtenha uma referência para o Firestore
 
 export const auth = firebase.auth();
 export {db};
-export default {firebase };
+export default {firebase};
 
 
 // Funções CRUD para Instituições
@@ -92,5 +92,16 @@ export const addLivro = async (nome,
     materia,
     quantidade,
     validade,
+  });
+};
+export const addUser = async (userid,
+  nome,
+  cpf,
+  perfil) => {
+  await db.collection("usuarios").add({
+    userid,
+  nome,
+  cpf,
+  perfil
   });
 };
