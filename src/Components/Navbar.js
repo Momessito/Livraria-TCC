@@ -60,8 +60,8 @@ console.log("Primeira letra do e-mail:", primeiraLetra);
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
       </label>
       <ul tabindex="0" class=" menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <li><a>Home</a></li>
-        <li><a href="/livros">Cadastrar Livro</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/CadastroLI">Cadastrar Livro</a></li>
       </ul>
     </div>
   </div>
@@ -88,7 +88,8 @@ console.log("Primeira letra do e-mail:", primeiraLetra);
       </label>
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li ><a>Configurações</a></li>
-          <li ><a>Registrar Livro</a></li>
+        
+          <li ><a href="/CadastroLI">Registrar Livro</a></li>
           <li  onClick={sair}><a>Sair</a></li>
           </ul>
           </div>

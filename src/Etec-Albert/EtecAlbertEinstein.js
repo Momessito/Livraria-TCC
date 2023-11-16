@@ -65,7 +65,7 @@ useEffect(() => {
 <br />
 <div className="join join-horizontal lg:join-horizontal">
   <Link to="/CadastroLi" className="btn join-item">Cadastrar</Link>
-  <button className="btn join-item">Consultar</button>
+  <Link to="/livros" className="btn join-item">Consultar</Link>
   <button className="btn join-item">Devolver</button>
 </div>
 </div>
