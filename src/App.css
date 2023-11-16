@@ -14,6 +14,10 @@
   width: 80%;
   overflow: hidden;
 }
+#smallInst{
+  color: red;
+  visibility: hidden;
+}
 .fade{
   z-index: -1;
 height: 30vh;
@@ -261,7 +265,7 @@ footer{
 }
 
 .table-e{
-  margin-top: 15%;
+  margin-top: 5%;
 }
 
 .table-e h2{

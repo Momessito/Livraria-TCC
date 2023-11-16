@@ -15,8 +15,9 @@ function Home() {
         </div>
       </div>
 
-      <TableExample />
       <MainHomePage />
+      <TableExample />
+
       <Team />
       <Footer />
       <Alert text='Bem vindo ao Didacto!' />

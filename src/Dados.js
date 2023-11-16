@@ -1,6 +1,21 @@
 import { Link } from "react-router-dom";
 
 function BasesDados(){
+  function Acess() {
+    let input = document.getElementById('InputInst');
+    let text = document.getElementById('smallInst');
+
+    if (input && input.value === '1234') {
+      window.location.href = '/Instituicao/Etec';
+    }else{
+      setTimeout(() => {
+        window.location.href = '/';
+
+      }, 500);
+      text.style.visibility = 'visible'
+
+    }
+  }
     return(<div>
 <div class="bg-gray-50 min-h-screen flex flex-col items-center justify-center px-16">
       <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Bem Vindo as instituições</h1>
@@ -13,7 +28,23 @@ function BasesDados(){
       <div class="p-7 bg-white rounded-lg flex items-center justify-between space-x-8">
         <div class="dados flex-1 flex justify-between items-center">
           <div class="text-md font-semibold leading-7 text-gray-900">Etec Albert Einstein</div>
-          <Link to={'/Instituicao/Etec'} class="w-24 h-6 rounded-lg bg-blue-400 btn text-white" style={{backgroundColor : 'rgb(0, 168, 244)'}}>Entrar</Link>
+          <label htmlFor="my_modal_6" className="w-24 h-6 rounded-lg bg-blue-400 btn text-white" style={{ backgroundColor: 'rgb(0, 168, 244)' }}>Entrar</label>
+
+<input type="checkbox" id="my_modal_6" className="modal-toggle" />
+<div className="modal">
+  <div className="modal-box">
+    <h3 className="font-bold text-lg">Digite a senha para continuar!</h3>
+    <label className="label">
+      <span className="label-text">Digite sua senha</span>
+    </label>
+    <input type="password" className="input input-bordered input-info w-full" id="InputInst" />
+    <small className="smallInst" id="smallInst">Senha Incorreta</small>
+    <div className="modal-action">
+      <label className="btn text-white" style={{ backgroundColor: 'rgb(0, 168, 244)' }} onClick={Acess}>Entrar</label>
+      <label htmlFor="my_modal_6" className="btn">Sair</label>
+    </div>
+  </div>
+</div>
         </div>
       </div>
       <div class="p-5 bg-white rounded-lg flex items-center justify-between space-x-8">
@@ -34,6 +65,7 @@ function BasesDados(){
   </div>
 </div>
     </div>)
+
 }
 
 

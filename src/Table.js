@@ -42,7 +42,8 @@ useEffect(() => {
       <tr>
         <th></th>
         <th>Titulo / Autor</th>
-        <th>Professor / Materia</th>
+        <th>Validade</th>
+        <th>Materia / Quantidade</th>
         <th>Configurar</th>
       </tr>
     </thead>
@@ -67,13 +68,17 @@ useEffect(() => {
             </div>
           </div>
           <div>
-            <div className="font-bold">{book.titulo}</div>
-            <div className="text-sm opacity-50">{book.Autor}</div>
+            <div className="font-bold">{book.nome}</div>
+            <div className="text-sm opacity-50">{book.editora}</div>
           </div>
         </div>
       </td>
       <td>
-        {book.Professor}
+      <div className="text-sm opacity-50">{book.validade}</div>
+
+      </td>
+      <td>
+        {book.materia}
         <br />
         <span className="badge badge-ghost badge-sm">{book.quantidade} Livros</span>
       </td>

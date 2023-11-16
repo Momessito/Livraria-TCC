@@ -1,7 +1,7 @@
 export default function TableExample(){
     return(
         <div className="table-e">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Conheça nossa equipe</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Exemplos De Tabelas</h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
              Entenda como funciona o metodo de cadastro dos nossos livros
             </p>
