@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { auth } from "./BackEnd/Firebase";
+import Firebase, { addUser, auth } from "./BackEnd/Firebase";
 
 function Register() {
   const [idCliente, setIdCliente] = useState("");
   const [cpf, setCpf] = useState("");
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
-  const [telefone, setTelefone] = useState("");
+  const [Perfil, setPerfil] = useState("");
   const [password, setPassword] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
 
@@ -25,7 +25,7 @@ function Register() {
     e.preventDefault();
     try {
       // Validar os campos (exemplos abaixo)
-      if (!idCliente || !cpf || !nome || !email || !telefone || !password) {
+      if (!idCliente || !cpf || !nome || !email || !Perfil || !password) {
         console.error("Preencha todos os campos");
         return;
       }
@@ -37,7 +37,14 @@ function Register() {
         return;
       }
 
-      await auth.createUserWithEmailAndPassword(email, password);
+      await auth.createUserWithEmailAndPassword(email, password)
+          .then((userCredential) => { 
+            var user = userCredential.user;
+            addUser(user.uid,nome,cpf,Perfil);
+
+          });
+
+
       setLoginSuccess(true);
       localStorage.setItem("userEmail", email);
     } catch (error) {
@@ -45,6 +52,8 @@ function Register() {
     }
   };
 
+    // Função para salvar dados adicionais na Realtime Database
+  
   return (
     <div className="App">
       <div className="text-sm breadcrumbs m-10">
@@ -115,13 +124,13 @@ function Register() {
                   className="input input-bordered"
                 />
                 <label className="label">
-                <span className="label-text">Telefone</span>
+                <span className="label-text">Perfil</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="Telefone"
-                  value={telefone}
-                  onChange={(e) => setTelefone(e.target.value)}
+                  placeholder="Perfil"
+                  value={Perfil}
+                  onChange={(e) => setPerfil(e.target.value)}
                   className="input input-bordered"
                 />
                 <label className="label">
