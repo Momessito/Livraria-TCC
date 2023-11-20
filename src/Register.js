@@ -24,31 +24,36 @@ function Register() {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      // Validar os campos (exemplos abaixo)
       if (!idCliente || !cpf || !nome || !email || !Perfil || !password) {
         console.error("Preencha todos os campos");
+        // Adicione lógica para fornecer feedback ao usuário
         return;
       }
-
-      // Validação do CPF (exemplo simples, você pode usar uma biblioteca de validação de CPF)
+  
       const cpfRegex = /^\d{11}$/;
       if (!cpfRegex.test(cpf)) {
         console.error("CPF inválido");
+        // Adicione lógica para fornecer feedback ao usuário
         return;
       }
-
+  
+      // Adicione um indicador visual de carregamento
+      // Isso pode ser um spinner ou uma mensagem na interface do usuário
+  
       await auth.createUserWithEmailAndPassword(email, password)
-          .then((userCredential) => { 
-            var user = userCredential.user;
-            addUser(user.uid,nome,cpf,Perfil);
-
-          });
-
-
+        .then((userCredential) => {
+          var user = userCredential.user;
+          addUser(user.uid, nome, cpf, Perfil);
+        });
+  
+      // Remova o indicador visual de carregamento
+      // Redirecione o usuário ou faça outra ação relevante após o registro bem-sucedido
+  
       setLoginSuccess(true);
       localStorage.setItem("userEmail", email);
     } catch (error) {
-      console.error("Erro ao cadastrar: ", error);
+      console.error("Erro ao cadastrar: ", error.message);
+      // Adicione lógica para fornecer feedback ao usuário
     }
   };
 
