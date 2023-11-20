@@ -124,15 +124,17 @@ function Register() {
                   className="input input-bordered"
                 />
                 <label className="label">
-                <span className="label-text">Perfil</span>
+                  <span className="label-text">Perfil</span>
                 </label>
-                <input
-                  type="text"
-                  placeholder="Perfil"
+                <select
                   value={Perfil}
                   onChange={(e) => setPerfil(e.target.value)}
-                  className="input input-bordered"
-                />
+                  className="select select-bordered"
+                >
+                  <option value="Professor">Professor</option>
+                  <option value="Diretor">Diretor</option>
+                </select>
+
                 <label className="label">
                 <span className="label-text">Senha</span>
                 </label>

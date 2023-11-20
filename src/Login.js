@@ -29,6 +29,10 @@ function App() {
       document.getElementById('my_modal_4').showModal();
     }
   };
+  
+  const pagCadastro = () => {
+    window.location.href = "/registro";
+  }
 
   return (
     <div className="App">
@@ -78,6 +82,8 @@ function App() {
         </div>
         <div className="form-control mt-6">
           <button onClick={handleLogin}  className="btn btn-primary">Login</button>
+          <span className="block text-center text-gray-700">--ou--</span>
+          <button className="btn btn-info" onClick={pagCadastro} >Cadastre-se</button>
             <dialog id="my_modal_4" className="modal">
               <div className="modal-box w-11/12 max-w-5xl">
                 <h3 className="font-bold text-lg">Erro no Login!</h3>
