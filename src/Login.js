@@ -9,7 +9,7 @@ import Hero from "./Components/Hero";
 import book from "./book.svg"
 import AuthComponent from "./Components/authComponet";
 import { useState } from "react";
-import { auth } from "./BackEnd/Firebase"; // Substitua pelo caminho correto para o arquivo Firebase.js
+import { auth, getCurrentUser, obterInformacoesUsuarioFirestore } from "./BackEnd/Firebase"; // Substitua pelo caminho correto para o arquivo Firebase.js
 
 
 function App() {
@@ -22,8 +22,26 @@ function App() {
     try {
       await auth.signInWithEmailAndPassword(email, password);
       console.log("Login bem-sucedido!");
-      localStorage.setItem("userEmail", email);
-      window.location.href = "/";
+  
+      // Obtém o usuário atualmente autenticado
+      const user = await getCurrentUser();
+  
+      // Se o usuário estiver autenticado, obtemos suas informações do Firestore
+      if (user) {
+        const dadosUsuario = await obterInformacoesUsuarioFirestore(user.uid);
+  
+        // Faça algo com as informações do usuário
+        console.log('Informações do usuário do Firestore:', dadosUsuario);
+  
+        // Você pode armazenar essas informações onde for necessário no seu aplicativo
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("permission", JSON.stringify(dadosUsuario.perfil));
+        localStorage.setItem("userName", JSON.stringify(dadosUsuario.nome));
+  
+        // Redirecionar ou executar outras ações relevantes após o login bem-sucedido
+      } else {
+        console.log('Usuário não autenticado');
+      }
     } catch (error) {
       console.error("Erro ao fazer login: ", error);
       document.getElementById('my_modal_4').showModal();

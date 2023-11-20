@@ -105,3 +105,32 @@ export const addUser = async (userid,
   perfil
   });
 };
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      unsubscribe();
+      resolve(user);
+    }, reject);
+  });
+};
+
+export const obterInformacoesUsuarioFirestore = async (userId) => {
+  try {
+    const usuariosRef = db.collection('usuarios');
+    const snapshot = await usuariosRef.where('userid', '==', userId).get();
+
+    if (!snapshot.empty) {
+      // A consulta pode retornar vários documentos, mas vamos assumir que há apenas um
+      const dadosUsuario = snapshot.docs[0].data();
+      console.log('Informações do usuário do Firestore:', dadosUsuario);
+      return dadosUsuario;
+    } else {
+      console.log('Usuário não encontrado no Firestore');
+      return null;
+    }
+  } catch (error) {
+    console.error('Erro ao obter informações do usuário do Firestore:', error);
+    throw error;
+  }
+};

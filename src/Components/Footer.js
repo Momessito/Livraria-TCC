@@ -12,28 +12,7 @@ const Footer = () => {
   const [livros, setLivros] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Consultar instituições
-        const instituicoesData = await getInstituicoes();
-        console.log("Dados de Instituições:", instituicoesData);
-        setInstituicoes(instituicoesData);
 
-        // Consultar professores
-        const professoresData = await getProfessores();
-        console.log("Dados de Professores:", professoresData);
-        setProfessores(professoresData);
-
-        // Consultar livros
-        const livrosData = await getLivros();
-        console.log("Dados de Livros:", livrosData);
-        setLivros(livrosData);
-      } catch (error) {
-        console.error("Erro ao buscar dados:", error);
-      }
-    };
-
-    fetchData();
   }, []);
   return (
 <footer className="footer items-center p-4 bg-neutral text-neutral-content" style={{ backgroundColor: 'rgb(0, 168, 244)' }}>

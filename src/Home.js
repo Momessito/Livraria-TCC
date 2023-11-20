@@ -5,8 +5,14 @@ import Footer from './Components/Footer'
 import Alert from "./Components/Alert";
 import Team from "./Components/Team";
 import TableExample from "./Components/TableExample";
+import { db, getCurrentUser } from "./BackEnd/Firebase";
+import { useEffect } from "react";
 
 function Home() {
+
+
+  
+  
   return (
     <div className="App">
       <div className="StartImage">
@@ -17,7 +23,7 @@ function Home() {
 
       <MainHomePage />
       <TableExample />
-
+      
       <Team />
       <Footer />
       <Alert text='Bem vindo ao Didacto!' />
