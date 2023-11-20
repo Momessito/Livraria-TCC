@@ -18,7 +18,8 @@ function App() {
         <Route path="/Instituicao/Etec" element={<EtecAlbertEinstein />} />
         <Route path="/Livros" element={<Table />} />
         <Route path="/CadastroLi" element={<CadL />} />
-        <Route path="/Registro" element={<Register />} />
+        <Route path="/Registro" element={<Register />} />  
+
 
       </Routes>
     </Router>
