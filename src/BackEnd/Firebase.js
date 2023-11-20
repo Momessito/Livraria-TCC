@@ -15,10 +15,12 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore(); // Obtenha uma referência para o Firestore
+const { FieldValue } = firebase.firestore;
 
 export const auth = firebase.auth();
-export {db};
+export {db , FieldValue };
 export default {firebase};
+
 
 
 // Funções CRUD para Instituições
@@ -44,12 +46,12 @@ export const getInstituicoes = async () => {
   
   export const getProfessores = async () => {
     try {
-      const snapshot = await db.collection("professores").get();
+      const snapshot = await db.collection("usuarios").get();
       const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      console.log("Professores:", data);
+      console.log("usuarios:", data);
       return data;
     } catch (error) {
-      console.error("Erro ao buscar professores:", error);
+      console.error("Erro ao buscar usuarios:", error);
       throw error;
     }
   };

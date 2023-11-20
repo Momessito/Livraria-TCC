@@ -50,7 +50,7 @@ useEffect(() => {
           
             <div className='fade'></div>
             <div className='hero bg-white flex  heroinst justify-around	 p-5'>
-<div ><h1 className='py-6 text-base font-semibold leading-7 text-gray-900'>Bem vindo de volta , <h1 className='text-lg font-semibold leading-6 texto'>{localStorage.getItem('userEmail')}</h1></h1></div>
+<div ><h1 className='py-6 text-base font-semibold leading-7 text-gray-900'>Bem vindo de volta , <h1 className='text-lg font-semibold leading-6 texto'>{localStorage.getItem('userName')}</h1></h1></div>
 <div className='flex flex-column content-end	'>
 <span className='badge badge-ghost badge-sm'>Etec Albert Einstein</span></div>
 </div>

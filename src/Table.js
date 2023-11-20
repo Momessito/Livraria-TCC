@@ -1,10 +1,9 @@
 import {React,useEffect, useState } from "react";
-import { auth, db, getLivros } from "./BackEnd/Firebase";
+import { FieldValue, auth, db, getLivros } from "./BackEnd/Firebase";
 import Alert from './Components/Alert';
 import { Link } from "react-router-dom";
 import firebase from "./BackEnd/Firebase";
 const { firestore } = firebase;
-
 
 export default function Table() {
   const [selectAll, setSelectAll] = useState(false);
@@ -53,10 +52,12 @@ const handleExcluir = async (livroId, quantidadeExcluir) => {
     const docRef = livrosRef.doc(livroId);
 
     // Verifica se a quantidade a ser excluída é menor que a quantidade atual
-    if (quantidadeExcluir < books.find((livro) => livro.id === livroId).quantidade) {
+    const livroSelecionado = books.find((livro) => livro.id === livroId);
+
+    if (quantidadeExcluir < livroSelecionado.quantidade) {
       // Atualiza a quantidade subtraindo a quantidadeExcluir
       await docRef.update({
-        quantidade: firestore.FieldValue.increment(-quantidadeExcluir),
+        quantidade: FieldValue.increment(-quantidadeExcluir),
       });
 
       // Atualize o estado `books` para refletir a alteração no front-end
@@ -82,6 +83,7 @@ const handleExcluir = async (livroId, quantidadeExcluir) => {
     console.error('Erro ao editar/excluir livro:', error);
   }
 };
+
 
 
 
@@ -119,7 +121,7 @@ const handleExcluir = async (livroId, quantidadeExcluir) => {
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">
-          {book.imagem != null ? (
+          {book.imagem != '' ? (
   <div className="mask mask-squircle w-12 h-12">
     <img
       src={book.imagem}
@@ -179,6 +181,7 @@ const handleExcluir = async (livroId, quantidadeExcluir) => {
     htmlFor={`my_modal_${book.id}`}
     className="btn btn-ghost btn-xs text-white" 
     style={{backgroundColor : 'red'}}
+    onClick={() => {console.log(book.quantidade)}}
   >
     Excluir
   </label>
@@ -195,9 +198,13 @@ const handleExcluir = async (livroId, quantidadeExcluir) => {
         onChange={(e) => setQuantidade(e.target.value)}
       />
       <div className="modal-action">
-        <label className="btn btn-error" onClick={() => handleExcluir(book.id, quantidade)}>
+        <label className="btn btn-error" onClick={() => {handleExcluir(book.id, quantidade)}} >
           Excluir
         </label>
+        <label className="btn" htmlFor={`my_modal_${book.id}`}>
+          Sair
+        </label>
+
       </div>
     </div>
   </div>

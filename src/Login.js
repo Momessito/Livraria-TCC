@@ -35,10 +35,9 @@ function App() {
   
         // Você pode armazenar essas informações onde for necessário no seu aplicativo
         localStorage.setItem("userEmail", email);
-        localStorage.setItem("permission", JSON.stringify(dadosUsuario.perfil));
-        localStorage.setItem("userName", JSON.stringify(dadosUsuario.nome));
+        localStorage.setItem("permission", dadosUsuario.perfil);
+        localStorage.setItem("userName", dadosUsuario.nome);
   
-        // Redirecionar ou executar outras ações relevantes após o login bem-sucedido
       } else {
         console.log('Usuário não autenticado');
       }
@@ -108,7 +107,6 @@ function App() {
                 <p className="py-4">Seu email ou senha podem estar incorretos, tente novamente.</p>
                 <div className="modal-action">
                   <form method="dialog">
-                    {/* if there is a button, it will close the modal */}
                     <button className="btn">Fechar</button>
                   </form>
                 </div>
