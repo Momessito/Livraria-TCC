@@ -108,7 +108,7 @@ export default function Table() {
 
   const handleEmprestimo = async (livroId, quantidadeReservar, alunosAssociados) => {
     quantidadeReservar = Number(quantidadeReservar);
-  
+    
     try {
       const livrosRef = db.collection('livros');
       const livrosEmprestadosRef = db.collection('livrosEmprestados');
@@ -120,9 +120,9 @@ export default function Table() {
       if (quantidadeReservar < livroSelecionado.quantidade) {
         // Atualiza a quantidade subtraindo a quantidadeReservar
         await docRef.update({
-          quantidade: firebase.firestore.FieldValue.increment(-quantidadeReservar),
+          quantidade: FieldValue.increment(+(-quantidadeReservar)),
         });
-  
+      
         // Adiciona um novo documento à coleção livrosEmprestados
         await livrosEmprestadosRef.add({
           livroId,
@@ -130,7 +130,7 @@ export default function Table() {
           quantidade: quantidadeReservar,
           alunos: alunosAssociados,
         });
-  
+      
         // Atualize o estado `books` para refletir a alteração no front-end
         const novosLivros = books.map((livro) =>
           livro.id === livroId
@@ -138,7 +138,7 @@ export default function Table() {
             : livro
         );
         setbooks(novosLivros);
-  
+      
         console.log(`Quantidade de ${quantidadeReservar} livro(s) reservada com sucesso!`);
       } else {
         // Se a quantidade a ser reservada for maior ou igual à quantidade atual, reserve o livro e exclua o registro
@@ -241,59 +241,60 @@ export default function Table() {
                   <span className="badge badge-ghost badge-sm">{book.quantidade} Livros</span>
                 </td>
                 <th>
-      <label
-        htmlFor="my_modal_6"
-        className="btn btn-ghost btn-xs text-white"
-        style={{ backgroundColor: 'rgb(0, 168, 244)' }}
-      >
-        Reservar
-      </label>
-      <input type="checkbox" id="my_modal_6" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box">
-          <h3 className="stat-value text-lg">Reserve esse livro !</h3>
-          <p className="py-4">Digite a quantidade</p>
-          <input
-            type="number"
-            placeholder="Digite a quantidade"
-            className="input input-bordered input-info w-full max-w-sm"
-            value={quantidadeReservar}
-            onChange={(e) => handleQuantidadeChange(e.target.value)}
-          />
-          {/* Adicionando tabela para inserir nomes dos alunos */}
-          <table className="table mt-4">
-            <thead>
-              <tr>
-                <th>Aluno</th>
-              </tr>
-            </thead>
-            <tbody>
-              {alunosAssociados.map((aluno, index) => (
-                <tr key={index}>
-                  <td>
-                    <input
-                      type="text"
-                      placeholder={`Nome do Aluno ${index + 1}`}
-                      className="input input-bordered"
-                      value={aluno}
-                      onChange={(e) => handleAlunoChange(index, e.target.value)}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="modal-action">
-            <label className="btn btn-primary" onClick={handleEmprestimo}>
-              Reservar
-            </label>
-            <label htmlFor="my_modal_6" className="btn">
-              Fechar
-            </label>
-          </div>
-        </div>
+  <label
+    htmlFor="my_modal_6"
+    className="btn btn-ghost btn-xs text-white"
+    style={{ backgroundColor: 'rgb(0, 168, 244)' }}
+  >
+    Reservar
+  </label>
+  <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+  <div className="modal">
+    <div className="modal-box">
+      <h3 className="stat-value text-lg">Reserve esse livro!</h3>
+      <p className="py-4">Digite a quantidade</p>
+      <input
+        type="number"
+        placeholder="Digite a quantidade"
+        className="input input-bordered input-info w-full max-w-sm"
+        value={quantidadeReservar}
+        onChange={(e) => handleQuantidadeChange(e.target.value)}
+      />
+      {/* Adicionando tabela para inserir nomes dos alunos */}
+      <table className="table mt-4">
+        <thead>
+          <tr>
+            <th>Aluno</th>
+          </tr>
+        </thead>
+        <tbody>
+          {alunosAssociados.map((aluno, index) => (
+            <tr key={index}>
+              <td>
+                <input
+                  type="text"
+                  placeholder={`Nome do Aluno ${index + 1}`}
+                  className="input input-bordered"
+                  value={aluno}
+                  onChange={(e) => handleAlunoChange(index, e.target.value)}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="modal-action">
+        <label className="btn btn-primary" onClick={() => handleEmprestimo(book.id, quantidadeReservar, alunosAssociados)}>
+          Reservar
+        </label>
+        <label htmlFor="my_modal_6" className="btn">
+          Fechar
+        </label>
       </div>
-    </th>
+    </div>
+  </div>
+</th>
+
 
 
                 <th>
