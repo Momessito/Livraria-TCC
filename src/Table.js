@@ -106,62 +106,80 @@ export default function Table() {
     setAlunosAssociados(novosAlunos);
   };
 
-  const handleEmprestimo = async (livroId, quantidadeReservar, alunosAssociados) => {
-    quantidadeReservar = Number(quantidadeReservar);
-    
-    try {
-      const livrosRef = db.collection('livros');
-      const livrosEmprestadosRef = db.collection('livrosEmprestados');
-      const docRef = livrosRef.doc(livroId);
+const handleEmprestimo = async (livroId, quantidadeReservar, alunosAssociados,nome,
+  editora,
+  imagem,
+  materia,
+  validade,) => {
+  quantidadeReservar = Number(quantidadeReservar);
   
-      // Verifica se a quantidade a ser reservada é menor que a quantidade atual
-      const livroSelecionado = books.find((livro) => livro.id === livroId);
-  
-      if (quantidadeReservar < livroSelecionado.quantidade) {
-        // Atualiza a quantidade subtraindo a quantidadeReservar
-        await docRef.update({
-          quantidade: FieldValue.increment(+(-quantidadeReservar)),
-        });
-      
-        // Adiciona um novo documento à coleção livrosEmprestados
-        await livrosEmprestadosRef.add({
-          livroId,
-          usuario: localStorage.getItem('userName'),
-          quantidade: quantidadeReservar,
-          alunos: alunosAssociados,
-        });
-      
-        // Atualize o estado `books` para refletir a alteração no front-end
-        const novosLivros = books.map((livro) =>
-          livro.id === livroId
-            ? { ...livro, quantidade: livro.quantidade - quantidadeReservar }
-            : livro
-        );
-        setbooks(novosLivros);
-      
-        console.log(`Quantidade de ${quantidadeReservar} livro(s) reservada com sucesso!`);
-      } else {
-        // Se a quantidade a ser reservada for maior ou igual à quantidade atual, reserve o livro e exclua o registro
-        await docRef.delete();
-  
-        // Adiciona um novo documento à coleção livrosEmprestados
-        await livrosEmprestadosRef.add({
-          livroId,
-          usuario: localStorage.getItem('userName'),
-          quantidade: livroSelecionado.quantidade,
-          alunos: alunosAssociados,
-        });
-  
-        // Atualize o estado `books` para refletir a exclusão no front-end
-        const novosLivros = books.filter((livro) => livro.id !== livroId);
-        setbooks(novosLivros);
-  
-        console.log(`Livro reservado com sucesso!`);
-      }
-    } catch (error) {
-      console.error('Erro ao reservar livro:', error);
+  try {
+    const livrosRef = db.collection('livros');
+    const livrosEmprestadosRef = db.collection('livrosEmprestados');
+    const docRef = livrosRef.doc(livroId);
+
+    // Verifica se a quantidade a ser reservada é menor que a quantidade atual
+    const livroSelecionado = books.find((livro) => livro.id === livroId);
+
+    if (quantidadeReservar < livroSelecionado.quantidade) {
+      // Atualiza a quantidade subtraindo a quantidadeReservar
+      const livroSnapshot = await docRef.get();
+      const quantidadeAtual = livroSnapshot.data().quantidade;
+
+      await docRef.update({
+        quantidade: quantidadeAtual - quantidadeReservar,
+      });
+
+      // Adiciona um novo documento à coleção livrosEmprestados
+      await livrosEmprestadosRef.add({
+        livroId,
+        usuario: localStorage.getItem('userName'),
+        quantidade: quantidadeReservar,
+        alunos: alunosAssociados,
+        nome : nome,
+  editora : editora,
+  imagem : imagem,
+  materia : materia,
+  validade : validade,
+        // Adicione outros campos conforme necessário
+      });
+
+      // Atualize o estado `books` para refletir a alteração no front-end
+      const novosLivros = books.map((livro) =>
+        livro.id === livroId
+          ? { ...livro, quantidade: livro.quantidade - quantidadeReservar }
+          : livro
+      );
+      setbooks(novosLivros);
+
+      console.log(`Quantidade de ${quantidadeReservar} livro(s) reservada com sucesso!`);
+    } else {
+      // Se a quantidade a ser reservada for maior ou igual à quantidade atual, reserve o livro e exclua o registro
+      await docRef.delete();
+
+      // Adiciona um novo documento à coleção livrosEmprestados
+      await livrosEmprestadosRef.add({
+        livroId,
+        usuario: localStorage.getItem('userName'),
+        quantidade: livroSelecionado.quantidade,
+        alunos: alunosAssociados,
+        titulo: livroSelecionado.titulo,
+        autor: livroSelecionado.autor,
+        validade: livroSelecionado.validade,
+        // Adicione outros campos conforme necessário
+      });
+
+      // Atualize o estado `books` para refletir a exclusão no front-end
+      const novosLivros = books.filter((livro) => livro.id !== livroId);
+      setbooks(novosLivros);
+
+      console.log(`Livro reservado com sucesso!`);
     }
-  };
+  } catch (error) {
+    console.error('Erro ao reservar livro:', error);
+  }
+};
+
   
   
   
@@ -284,7 +302,11 @@ export default function Table() {
         </tbody>
       </table>
       <div className="modal-action">
-        <label className="btn btn-primary" onClick={() => handleEmprestimo(book.id, quantidadeReservar, alunosAssociados)}>
+        <label className="btn btn-primary" onClick={() => handleEmprestimo(book.id, quantidadeReservar, alunosAssociados,book.nome,
+      book.editora,
+      book.imagem,
+      book.materia,
+      book.validade,)}>
           Reservar
         </label>
         <label htmlFor="my_modal_6" className="btn">

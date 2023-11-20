@@ -68,7 +68,18 @@ export const getInstituicoes = async () => {
     }
   };
   
-    
+  export const getEmprestimos = async () => {
+    try {
+      const snapshot = await db.collection("livrosEmprestados").get();
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      console.log("Empréstimos:", data);
+      return data;
+    } catch (error) {
+      console.error("Erro ao buscar empréstimos:", error);
+      throw error;
+    }
+  };
+  
   
 // Funções CRUD para Professores
 export const addProfessor = async (nome, disciplina, instituicaoId) => {
