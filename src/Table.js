@@ -13,6 +13,7 @@ export default function Table() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [quantidadeExcluir, setQuantidadeExcluir] = useState(0);
   const [alunosAssociados, setAlunosAssociados] = useState(Array.from({ length: 0 }, () => ''));
+  const [livroSelecionado, setLivroSelecionado] = useState(null);
 
 
   useEffect(() => {
@@ -106,26 +107,44 @@ export default function Table() {
     setAlunosAssociados(novosAlunos);
   };
 
-const handleEmprestimo = async (livroId, quantidadeReservar, alunosAssociados,nome,
+const handleEmprestimo = async (
+  livroId,
+  quantidadeReservar,
+  alunosAssociados,
+  nome,
   editora,
   imagem,
   materia,
-  validade,) => {
+  validade
+) => {
   quantidadeReservar = Number(quantidadeReservar);
-  
+
   try {
     const livrosRef = db.collection('livros');
     const livrosEmprestadosRef = db.collection('livrosEmprestados');
     const docRef = livrosRef.doc(livroId);
 
+    // Debugging
+    console.log('Livro ID:', livroId);
+    console.log('Quantidade a reservar:', quantidadeReservar);
+    console.log('Alunos Associados:', alunosAssociados);
+
     // Verifica se a quantidade a ser reservada é menor que a quantidade atual
-    const livroSelecionado = books.find((livro) => livro.id === livroId);
+    const livroSnapshot = await docRef.get();
+
+    if (!livroSnapshot.exists) {
+      console.log(`Livro com ID ${livroId} não encontrado.`);
+      return;
+    }
+
+    const livroSelecionado = livroSnapshot.data();
 
     if (quantidadeReservar < livroSelecionado.quantidade) {
-      // Atualiza a quantidade subtraindo a quantidadeReservar
-      const livroSnapshot = await docRef.get();
-      const quantidadeAtual = livroSnapshot.data().quantidade;
+      // Debugging
+      console.log('Reservando livro...');
 
+      // Atualiza a quantidade subtraindo a quantidadeReservar
+      const quantidadeAtual = livroSelecionado.quantidade;
       await docRef.update({
         quantidade: quantidadeAtual - quantidadeReservar,
       });
@@ -144,6 +163,9 @@ const handleEmprestimo = async (livroId, quantidadeReservar, alunosAssociados,no
         // Adicione outros campos conforme necessário
       });
 
+      // Debugging
+      console.log(quantidadeAtual);
+
       // Atualize o estado `books` para refletir a alteração no front-end
       const novosLivros = books.map((livro) =>
         livro.id === livroId
@@ -154,31 +176,36 @@ const handleEmprestimo = async (livroId, quantidadeReservar, alunosAssociados,no
 
       console.log(`Quantidade de ${quantidadeReservar} livro(s) reservada com sucesso!`);
     } else {
-      // Se a quantidade a ser reservada for maior ou igual à quantidade atual, reserve o livro e exclua o registro
-      await docRef.delete();
+      // Debugging
+      const quantidadeAtual = livroSelecionado.quantidade;
 
       // Adiciona um novo documento à coleção livrosEmprestados
       await livrosEmprestadosRef.add({
         livroId,
         usuario: localStorage.getItem('userName'),
-        quantidade: livroSelecionado.quantidade,
+        quantidade:  quantidadeAtual,
         alunos: alunosAssociados,
-        titulo: livroSelecionado.titulo,
-        autor: livroSelecionado.autor,
-        validade: livroSelecionado.validade,
+        nome : nome,
+  editora : editora,
+  imagem : imagem,
+  materia : materia,
+  validade : validade,
         // Adicione outros campos conforme necessário
       });
+      await docRef.delete();
 
       // Atualize o estado `books` para refletir a exclusão no front-end
       const novosLivros = books.filter((livro) => livro.id !== livroId);
       setbooks(novosLivros);
 
       console.log(`Livro reservado com sucesso!`);
+      console.log('Quantidade a reservar é maior ou igual à quantidade atual.');
     }
   } catch (error) {
     console.error('Erro ao reservar livro:', error);
   }
 };
+
 
   
   
@@ -259,63 +286,63 @@ const handleEmprestimo = async (livroId, quantidadeReservar, alunosAssociados,no
                   <span className="badge badge-ghost badge-sm">{book.quantidade} Livros</span>
                 </td>
                 <th>
-  <label
-    htmlFor="my_modal_6"
-    className="btn btn-ghost btn-xs text-white"
-    style={{ backgroundColor: 'rgb(0, 168, 244)' }}
-  >
-    Reservar
-  </label>
-  <input type="checkbox" id="my_modal_6" className="modal-toggle" />
-  <div className="modal">
-    <div className="modal-box">
-      <h3 className="stat-value text-lg">Reserve esse livro!</h3>
-      <p className="py-4">Digite a quantidade</p>
-      <input
-        type="number"
-        placeholder="Digite a quantidade"
-        className="input input-bordered input-info w-full max-w-sm"
-        value={quantidadeReservar}
-        onChange={(e) => handleQuantidadeChange(e.target.value)}
-      />
-      {/* Adicionando tabela para inserir nomes dos alunos */}
-      <table className="table mt-4">
-        <thead>
-          <tr>
-            <th>Aluno</th>
-          </tr>
-        </thead>
-        <tbody>
-          {alunosAssociados.map((aluno, index) => (
-            <tr key={index}>
-              <td>
-                <input
-                  type="text"
-                  placeholder={`Nome do Aluno ${index + 1}`}
-                  className="input input-bordered"
-                  value={aluno}
-                  onChange={(e) => handleAlunoChange(index, e.target.value)}
-                />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="modal-action">
-        <label className="btn btn-primary" onClick={() => handleEmprestimo(book.id, quantidadeReservar, alunosAssociados,book.nome,
-      book.editora,
-      book.imagem,
-      book.materia,
-      book.validade,)}>
-          Reservar
-        </label>
-        <label htmlFor="my_modal_6" className="btn">
-          Fechar
-        </label>
+      <label
+        htmlFor={`my_modal_${book.id}`}
+        className="btn btn-ghost btn-xs text-white"
+        style={{ backgroundColor: 'rgb(0, 168, 244)' }}
+      >
+        Reservar
+      </label>
+      <input type="checkbox" id={`my_modal_${book.id}`} className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box">
+          <h3 className="stat-value text-lg">Reserve esse livro!</h3>
+          <p className="py-4">Digite a quantidade</p>
+          <input
+            type="number"
+            placeholder="Digite a quantidade"
+            className="input input-bordered input-info w-full max-w-sm"
+            value={quantidadeReservar}
+            onChange={(e) => handleQuantidadeChange(e.target.value)}
+          />
+          {/* Adicionando tabela para inserir nomes dos alunos */}
+          <table className="table mt-4">
+            <thead>
+              <tr>
+                <th>Aluno</th>
+              </tr>
+            </thead>
+            <tbody>
+              {alunosAssociados.map((aluno, index) => (
+                <tr key={index}>
+                  <td>
+                    <input
+                      type="text"
+                      placeholder={`Nome do Aluno ${index + 1}`}
+                      className="input input-bordered"
+                      value={aluno}
+                      onChange={(e) => handleAlunoChange(index, e.target.value)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="modal-action">
+            <label className="btn btn-primary" onClick={() => handleEmprestimo(book.id, quantidadeReservar, alunosAssociados, book.nome,
+              book.editora,
+              book.imagem,
+              book.materia,
+              book.validade)}>
+              Reservar
+            </label>
+            <label htmlFor={`my_modal_${book.id}`} className="btn">
+              Fechar
+            </label>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</th>
+    </th>
 
 
 

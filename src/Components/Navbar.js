@@ -86,7 +86,7 @@ console.log("Primeira letra do e-mail:", primeiraLetra);
     </div>
       </label>
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <li ><a>Configurações</a></li>
+        <li ><a href="/Instituicao/Etec">Configurações</a></li>
         
           <li ><a href="/CadastroLI">Registrar Livro</a></li>
           <li  onClick={sair}><a>Sair</a></li>
