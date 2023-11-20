@@ -27,3 +27,25 @@
 
 
 }
+
+@media (max-width : 426px){
+    .heroinst{
+        width: 100% !important; 
+    }
+    .breadcrumbs{
+        position: absolute;
+        left: 10px;
+        margin-top: -15px;
+
+    } 
+    .navbar-bottom h1{
+        display: none;
+      }
+      .navbar-bottom{
+        margin-left: 0 !important;
+        transform: translate(0px) !important;
+        width: 100% !important;
+        display: fixed;
+align-items: normal !important;
+      }
+}

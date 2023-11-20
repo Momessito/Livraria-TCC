@@ -53,6 +53,88 @@ left: 0;
 .MainPage{
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.267);
 }
+section{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: #3586ff00;
+  overflow: hidden;
+  pointer-events: none;
+
+}
+section .air{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url(https://1.bp.blogspot.com/-xQUc-TovqDk/XdxogmMqIRI/AAAAAAAACvI/AizpnE509UMGBcTiLJ58BC6iViPYGYQfQCLcBGAsYHQ/s1600/wave.png);
+  filter: brightness(0) saturate(100%) invert(50%) sepia(90%) saturate(2733%) hue-rotate(168deg) brightness(99%) contrast(101%);
+    background-size: 1000px 100px
+}
+
+section .air.air1{
+  animation: wave 30s linear infinite;
+  z-index: 1000;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+}
+section .air.air2{
+  animation: wave2 15s linear infinite;
+  z-index: 899;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+section .air.air3{
+  animation: wave 30s linear infinite;
+  z-index: 898;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15px;
+}
+section .air.air4{
+  animation: wave2 5s linear infinite;
+  z-index: 897;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+@keyframes wave{
+  0%{
+    background-position-x: 0px; 
+  }
+  100%{
+    background-position-x: 1000px; 
+  }
+}
+@keyframes wave2{
+  0%{
+    background-position-x: 0px; 
+  }
+  100%{
+    background-position-x: -1000px; 
+  }
+}
+.navbar-bottom{
+  width: 80%;
+  z-index: 10000;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.26);
+  position: fixed;
+  bottom: 0;
+  background-color: #00A8F4;
+  margin-left: 50%;
+  transform: translate(-50%,0%);
+  left: 0%;
+  padding: 10px;
+  border-radius: 10px 10px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .StartImage {
   margin-top: -70px;
   background-image: url(/src/imgs/bg-header-removebg-preview.png);
@@ -186,10 +268,11 @@ img.imgmain{
 }
 .actions{
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 65%;
-  margin-top: 60px;
+
+}
+.actions h1{
+  margin-right: 20px;
+  font-size: 20px;
 }
 .badge{
   white-space: nowrap;

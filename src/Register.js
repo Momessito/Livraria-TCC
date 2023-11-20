@@ -6,7 +6,7 @@ function Register() {
   const [cpf, setCpf] = useState("");
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
-  const [Perfil, setPerfil] = useState("");
+  const [Perfil, setPerfil] = useState("Professor");
   const [password, setPassword] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
 
@@ -21,11 +21,25 @@ function Register() {
     }
   };
 
+  const handleSelectChange = (e) => {
+    // O valor selecionado estará em e.target.value
+    const novoPerfil = e.target.value;
+    setPerfil(novoPerfil);
+
+    // Você pode fazer o que quiser com o valor aqui
+    console.log('Novo valor selecionado:', novoPerfil);
+  };
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
       if (!idCliente || !cpf || !nome || !email || !Perfil || !password) {
         console.error("Preencha todos os campos");
+        console.log(cpf)
+        console.log(nome)
+        console.log(email)
+        console.log(Perfil)
+        console.log(password)
         // Adicione lógica para fornecer feedback ao usuário
         return;
       }
@@ -132,13 +146,14 @@ function Register() {
                   <span className="label-text">Perfil</span>
                 </label>
                 <select
-                  value={Perfil}
-                  onChange={(e) => setPerfil(e.target.value)}
-                  className="select select-bordered"
-                >
-                  <option value="Professor">Professor</option>
-                  <option value="Diretor">Diretor</option>
-                </select>
+        value={Perfil}
+        onChange={handleSelectChange}
+        className="select select-bordered"
+      >
+        <option value="Professor">Professor</option>
+        <option value="Diretor">Diretor</option>
+      </select>
+
 
                 <label className="label">
                 <span className="label-text">Senha</span>

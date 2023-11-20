@@ -156,6 +156,19 @@ export default function Emprestimos() {
     }
   };
   
+  const handleOpenAlunosModal = (livroId) => {
+    const modal = document.getElementById(`alunos_associados_${livroId}`);
+    if (modal) {
+      modal.showModal();
+    }
+  };
+  
+  const handleCloseAlunosModal = (livroId) => {
+    const modal = document.getElementById(`alunos_associados_${livroId}`);
+    if (modal) {
+      modal.close();
+    }
+  };
   
   
 
@@ -235,11 +248,36 @@ export default function Emprestimos() {
                 <th>                  <div className="text-sm opacity-50">{book.usuario}</div>
                 </th>
                 
+                <th key={book.id}>
+    <label
+      htmlFor={`alunos_associados_${book.id}`}
+      className="btn btn-ghost btn-xs text-white"
+      style={{ backgroundColor: 'blue' }}
+    >
+      Alunos Associados
+    </label>
+    <input type="checkbox" id={`alunos_associados_${book.id}`} className="modal-toggle" />
+    <div className="modal">
+      <div className="modal-box">
+        <h3 className="stat-value text-lg">Alunos Associados</h3>
+        <ul>
+          {book.alunos.map((aluno, index) => (
+            <li key={index}>{aluno}</li>
+          ))}
+        </ul>
+        <div className="modal-action">
+          <label className="btn" htmlFor={`alunos_associados_${book.id}`}>
+            Fechar
+          </label>
+        </div>
+      </div>
+    </div>
+  </th>
 
-                <th>
 
 
-                </th>
+
+
                 <th>
                   <label
                     htmlFor={`my_modal_${book.id}`}

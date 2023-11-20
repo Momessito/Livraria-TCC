@@ -115,7 +115,33 @@ useEffect(() => {
           
             <div className='fade'></div>
             <div className='hero bg-white flex  heroinst justify-around	 p-5'>
-<div ><h1 className='py-6 text-base font-semibold leading-7 text-gray-900'>Bem vindo de volta, <span className='text-lg font-semibold leading-6 texto'>{localStorage.getItem('userName')}</span></h1><svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="100" height="100" viewBox="0 0 676 676">
+              
+<div >      <div className="text-sm breadcrumbs">
+        <ul>
+          <li>
+            <a href="/">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 mr-2 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" ></path></svg>
+              Início
+            </a>
+          </li>
+          <li>
+            <a href='/BasesDados'>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 mr-2 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+              Instituições
+            </a>
+          </li>
+          <li>
+            <a>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 mr-2 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+              Etec Albert Einstein
+            </a>
+          </li>
+        </ul>
+      </div>
+      <h1 className='py-3 text-base font-semibold leading-7 text-gray-900'>Bem vindo de volta, <span className='text-lg font-semibold leading-6 texto'>{localStorage.getItem('userName')}</span></h1>
+<div className="py-3 text-base font-semibold leading-7 text-gray-900">Email : <span className='text-lg font-semibold leading-6 texto'>{localStorage.getItem('userEmail')}</span></div>
+
+<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="100" height="100" viewBox="0 0 676 676">
 	<path d="M938,450a337.45265,337.45265,0,0,1-17.85,108.68q-1.02008,3-2.09,5.98a338.39278,338.39278,0,0,1-53.77,96.05q-10.32,12.945-21.87,24.82-11.55,11.895-24.25,22.63a336.248,336.248,0,0,1-165.78,75.8h-.01q-11.7,1.815-23.63,2.83Q614.545,787.99,600,788A336.94,336.94,0,0,1,358.09,686.05q-3.315-3.39-6.53-6.88-8.01-8.685-15.41-17.91-4.155-5.19-8.11-10.54a336.714,336.714,0,0,1-40.24-70.98,332.25383,332.25383,0,0,1-11.7-32.84c-.24-.79-.47-1.57995-.7-2.37q-.75-2.55-1.45-5.13A338.38,338.38,0,0,1,262,450c0-186.67,151.33-338,338-338S938,263.33,938,450Z" transform="translate(-262 -112)" fill="#f2f2f2" />
 	<path d="M405.34786,314.03191a22.02562,22.02562,0,0,0,22.026,25.603l53.95432,156.9927,34.42683-23.66L449.29637,315.7305a22.145,22.145,0,0,0-43.94851-1.69859Z" transform="translate(-262 -112)" fill="#a0616a" />
 	<path d="M686.95533,367.15c-23.96,27.26-83.04,75.3-131.71,108.38-10.52,7.15-20.56,13.59-29.65,18.98-6.14,3.64-11.85,6.79-16.99,9.36a27.99469,27.99469,0,0,1-38.41-14.5l-33.7-81.53,11.66-7.73005,28.75-19.07,6.53-4.32,26.96,64.21,28.43-22.82,17.65-14.17,80.46-64.57,6.94-2.06,16.19,15.8,11.44995,11.18,10.77,1.87C683.89533,366.43994,685.45533,366.77,686.95533,367.15Z" transform="translate(-262 -112)" fill="#00b0ff" />
@@ -146,14 +172,12 @@ useEffect(() => {
 
 <span className='badge badge-ghost badge-sm'>Etec Albert Einstein</span></div>
 </div>
-<br />
-<br />
+
 <br />
 <div className="card bg-primary text-primary-content" style={{ backgroundColor: 'rgb(0, 168, 244)' }}>
-  <div className="card-body">
+  <div className="card-body navbar-bottom">
 <div className='actions'>
 <h1 className='stat-value'>O que deseja fazer hoje?</h1>
-<p className='stat-title text-white'>Selecione a atividade desejada:</p>
 <br />
 <div className="join join-horizontal lg:join-horizontal">
   <Link to="/CadastroLi" className="btn join-item">Cadastrar</Link>
@@ -162,9 +186,7 @@ useEffect(() => {
 </div>
 </div>
 </div></div>
-<br />
-<br />
-<br />
+
 <div className="stats stats-vertical lg:stats-horizontal shadow">
   
 <div className="stat">
@@ -187,7 +209,7 @@ useEffect(() => {
 <br />
 <br />
 <br />
-<div className='actions'>
+<div className='actions2'>
 
 <h1  className='mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>Emprestimos no meu nome:</h1>
 <table className="table">
@@ -282,6 +304,12 @@ useEffect(() => {
 <br />
 <br />
            </table>
+           <section>
+  <div class='air air1'></div>
+  <div class='air air2'></div>
+  <div class='air air3'></div>
+  <div class='air air4'></div>
+</section>
   </div>   </div>
     )
 

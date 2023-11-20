@@ -348,14 +348,14 @@ const handleEmprestimo = async (
 
                 <th>
                   <label
-                    htmlFor={`my_modal_${book.id}`}
+                    htmlFor={`my_modal_${book.id}2`}
                     className="btn btn-ghost btn-xs text-white"
                     style={{ backgroundColor: 'red' }}
                     onClick={() => { console.log(book.quantidade) }}
                   >
                     Excluir
                   </label>
-                  <input type="checkbox" id={`my_modal_${book.id}`} className="modal-toggle" />
+                  <input type="checkbox" id={`my_modal_${book.id}2`} className="modal-toggle" />
                   <div className="modal">
                     <div className="modal-box">
                       <h3 className="stat-value text-lg">Exclua/edita a quantidade desse livro !</h3>
@@ -374,7 +374,7 @@ const handleEmprestimo = async (
                         </label>
 
 
-                        <label className="btn" htmlFor={`my_modal_${book.id}`}>
+                        <label className="btn" htmlFor={`my_modal_${book.id}2`}>
                           Sair
                         </label>
 
