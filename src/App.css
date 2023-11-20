@@ -257,11 +257,6 @@ footer{
   align-items: center;
   justify-content: center;
 }
-@media screen and (max-width: 768px){
-  .nome{
-  font-size: 60px;
-  }
-  }
 .X{
   margin: 10px;
   color: rgb(167, 80, 80);

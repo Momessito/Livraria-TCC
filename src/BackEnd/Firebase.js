@@ -80,22 +80,30 @@ export const addProfessor = async (nome, disciplina, instituicaoId) => {
 };
 
 
-// Funções CRUD para Livros
-export const addLivro = async (nome,
-  editora,
-  imagem,
-  materia,
-  quantidade,
-  validade) => {
-  await db.collection("livros").add({
-    nome,
-    editora,
-    imagem,
-    materia,
-    quantidade,
-    validade,
-  });
+export const addLivro = async (nome, editora, imagem, materia, quantidade, validade) => {
+  try {
+    const livrosRef = db.collection("livros");
+
+    // Adiciona o livro com os campos iniciais
+    const docRef = await livrosRef.add({
+      nome,
+      editora,
+      imagem,
+      materia,
+      quantidade,
+      validade,
+      emprestimos: [], // Cria o campo emprestimos como um array vazio
+    });
+
+    console.log(`Livro ${nome} adicionado com sucesso!`);
+    return docRef.id; // Retorna o ID do livro adicionado
+  } catch (error) {
+    console.error("Erro ao adicionar livro:", error);
+    throw error;
+  }
 };
+
+
 export const addUser = async (userid,
   nome,
   cpf,
