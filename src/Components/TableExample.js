@@ -1,8 +1,15 @@
+import Aos from "aos";
+import { useEffect } from "react";
+
 export default function TableExample(){
+
+  useEffect(() => {
+    Aos.init();
+  }, [])
     return(
-        <div className="table-e">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Exemplos De Tabelas</h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+        <div className="table-e" >
+            <h2 data-aos="fade-up" className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Exemplos De Tabelas</h2>
+            <p data-aos="fade-up" className="mt-6 text-lg leading-8 text-gray-600">
              Entenda como funciona o metodo de cadastro dos nossos livros
             </p>
         <div className="overflow-x-auto table-Example">
@@ -10,7 +17,7 @@ export default function TableExample(){
   <table className="table">
     {/* head */}
     <thead>
-      <tr>
+      <tr data-aos="fade-up">
         <th>
           <label>
             <input type="checkbox" className="checkbox" />
@@ -24,8 +31,8 @@ export default function TableExample(){
     </thead>
     <tbody>
       {/* row 1 */}
-      <tr>
-        <th>
+      <tr data-aos="fade-up">
+        <th data-aos="fade-up">
           <label>
             <input type="checkbox" className="checkbox" />
           </label>
@@ -49,13 +56,13 @@ export default function TableExample(){
           <span className="badge badge-ghost badge-sm">Volume 1</span>
         </td>
         <td>Biologia</td>
-        <th>
+        <th data-aos="fade-up">
           <button className="btn btn-ghost btn-xs">EDITAR</button>
         </th>
       </tr>
       {/* row 2 */}
-      <tr>
-        <th>
+      <tr data-aos="fade-up" >
+        <th data-aos="fade-up">
           <label>
             <input type="checkbox" className="checkbox" />
           </label>
@@ -79,13 +86,13 @@ export default function TableExample(){
           <span className="badge badge-ghost badge-sm">Volume 4</span>
         </td>
         <td>Filosofia</td>
-        <th>
+        <th data-aos="fade-up">
           <button className="btn btn-ghost btn-xs">EDITAR</button>
         </th>
       </tr>
       {/* row 3 */}
-      <tr>
-        <th>
+      <tr data-aos="fade-up">
+        <th data-aos="fade-up">
           <label>
             <input type="checkbox" className="checkbox" />
           </label>
@@ -110,13 +117,13 @@ Introdução à Ciências</div>
           <span className="badge badge-ghost badge-sm">Volume 5</span>
         </td>
         <td>Ciências</td>
-        <th>
+        <th data-aos="fade-up">
           <button className="btn btn-ghost btn-xs">EDITAR</button>
         </th>
       </tr>
       {/* row 4 */}
-      <tr>
-        <th>
+      <tr data-aos="fade-up">
+        <th data-aos="fade-up">
           <label>
             <input type="checkbox" className="checkbox" />
           </label>
@@ -140,7 +147,7 @@ Introdução à Ciências</div>
           <span className="badge badge-ghost badge-sm">Volume 2</span>
         </td>
         <td>Química</td>
-        <th>
+        <th data-aos="fade-up">
           <button className="btn btn-ghost btn-xs">EDITAR</button>
         </th>
       </tr>

@@ -32,8 +32,10 @@
     .heroinst{
         width: 100% !important; 
     }
-    .breadcrumbs{
+    .topoBread{
         position: absolute;
+        top: 25px;
+        z-index: 1000;
         left: 10px;
         margin-top: -15px;
 
@@ -48,4 +50,14 @@
         display: fixed;
 align-items: normal !important;
       }
+      .heroinst div:first-child{
+        margin-top: 100px;
+      }
+}
+@media (max-width : 775px){
+    .InfoAll{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
