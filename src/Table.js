@@ -6,14 +6,14 @@ import firebase from "./BackEnd/Firebase";
 const { firestore } = firebase;
 
 export default function Table() {
-  const [selectAll, setSelectAll] = useState(false);
   const [books, setbooks] = useState([]);
   const [quantidadeReservar, setQuantidadeReservar] = useState(0);
-  const [quantidadeReservarInt, setQuantidadeReservarInt] = useState(0);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [quantidadeExcluir, setQuantidadeExcluir] = useState(0);
   const [alunosAssociados, setAlunosAssociados] = useState(Array.from({ length: 0 }, () => ''));
-  const [livroSelecionado, setLivroSelecionado] = useState(null);
+
+  const [reservaConfirmada, setReservaConfirmada] = useState(false);
+  const [DeleteConfirmada, setDeleteConfirmada] = useState(false);
 
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function Table() {
 
       // Verifica se a quantidade a ser excluída é menor que a quantidade atual
       const livroSelecionado = books.find((livro) => livro.id === livroId);
-
+      setDeleteConfirmada(true)
       if (quantidadeExcluir < livroSelecionado.quantidade) {
         // Atualiza a quantidade subtraindo a quantidadeExcluir
         await docRef.update({
@@ -86,6 +86,7 @@ export default function Table() {
         // Atualize o estado `books` para refletir a exclusão no front-end
         const novosLivros = books.filter((livro) => livro.id !== livroId);
         setbooks(novosLivros);
+        setReservaConfirmada(true);
 
         console.log('Livro excluído com sucesso!');
       }
@@ -164,7 +165,6 @@ const handleEmprestimo = async (
       });
 
       // Debugging
-      console.log(quantidadeAtual);
 
       // Atualize o estado `books` para refletir a alteração no front-end
       const novosLivros = books.map((livro) =>
@@ -173,6 +173,8 @@ const handleEmprestimo = async (
           : livro
       );
       setbooks(novosLivros);
+      setReservaConfirmada(true);
+      console.log(reservaConfirmada);
 
       console.log(`Quantidade de ${quantidadeReservar} livro(s) reservada com sucesso!`);
     } else {
@@ -197,6 +199,7 @@ const handleEmprestimo = async (
       // Atualize o estado `books` para refletir a exclusão no front-end
       const novosLivros = books.filter((livro) => livro.id !== livroId);
       setbooks(novosLivros);
+      setReservaConfirmada(true);
 
       console.log(`Livro reservado com sucesso!`);
       console.log('Quantidade a reservar é maior ou igual à quantidade atual.');
@@ -329,13 +332,14 @@ const handleEmprestimo = async (
             </tbody>
           </table>
           <div className="modal-action">
-            <label className="btn btn-primary" onClick={() => handleEmprestimo(book.id, quantidadeReservar, alunosAssociados, book.nome,
+            <label htmlFor={`my_modal_${book.id}`} className="btn btn-primary" onClick={() => handleEmprestimo(book.id, quantidadeReservar, alunosAssociados, book.nome,
               book.editora,
               book.imagem,
               book.materia,
               book.validade)}>
               Reservar
             </label>
+            
             <label htmlFor={`my_modal_${book.id}`} className="btn">
               Fechar
             </label>
@@ -369,7 +373,7 @@ const handleEmprestimo = async (
                       />
 
                       <div className="modal-action">
-                        <label className="btn btn-error" onClick={() => handleExcluir(book.id, quantidadeExcluir)}>
+                        <label htmlFor={`my_modal_${book.id}2`} className="btn btn-error" onClick={() => handleExcluir(book.id, quantidadeExcluir)}>
                           Excluir
                         </label>
 
@@ -397,10 +401,35 @@ const handleEmprestimo = async (
 
 
 
-      <Alert text={'Você está entrando como ' + localStorage.getItem('userEmail')} />
+
     </div>
   );
 }
 
 
 
+/*{reservaConfirmada && (
+  <div role="alert" key={Date.now()} className="alert alert-success">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="stroke-current shrink-0 h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+    <span>Reserva Feita com sucesso!</span>
+  </div>
+)}
+      {DeleteConfirmada && (
+  <div role="alert" key={Date.now()} className="alert alert-error">
+<svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+<span>Livro Excluido Com Sucesso.</span>
+
+  </div>
+)}*/

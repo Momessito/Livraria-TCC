@@ -39,7 +39,10 @@
         left: 10px;
         margin-top: -15px;
 
-    } 
+    }
+    .insitmenu{
+        margin: 0px;
+      } 
     .navbar-bottom h1{
         display: none;
       }
@@ -60,4 +63,14 @@ align-items: normal !important;
         justify-content: center;
         align-items: center;
     }
+    .table{
+        overflow-x: scroll !important;
+    }
+    .actions2{
+        margin-bottom: 100px;
+        width: 100%;
+        overflow-x: scroll !important;
+        align-items: center !important;
+        justify-content: center;
+      }
 }

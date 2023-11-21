@@ -24,7 +24,7 @@ function BasesDados(){
   <div class="absolute top-0 -left-4 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob z-index-1" ></div>
     <div class="absolute top-0 -right-4 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" ></div>
     <div class="absolute -bottom-32 left-20 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000" ></div>
-    <div class="m-8 relative space-y-4">
+    <div class=" relative space-y-4 insitmenu">
       <div class="p-7 bg-white rounded-lg flex items-center justify-between space-x-8">
         <div class="dados flex-1 flex justify-between items-center">
           <div class="text-md font-semibold leading-7 text-gray-900">Etec Albert Einstein</div>

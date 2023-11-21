@@ -196,8 +196,8 @@ useEffect(() => {
 </div>
 </div>
 </div></div>
-<div className='InfoAll'>
-<div className='flex flex-col'>
+<div className='InfoAll shadow'>
+<div className='flex flex-col '>
 <h2 className='text-base font-semibold leading-7 text-center' style={{ color: 'rgb(0, 168, 244)' }}>Dados Sobre a Sua Instituição</h2>
 <h1  className='mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl m-5 flex items-center justify-center'>O Que Foi Cadastrado 
 <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="100" viewBox="0 0 995 697.68102">
@@ -460,7 +460,6 @@ useEffect(() => {
   <div class='air air4'></div>
 </section>
   </div></div>   
-  <Footer />
   </div>
     )
 
