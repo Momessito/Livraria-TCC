@@ -8,7 +8,7 @@ import InputPadrão from "./Components/InputPrimario";
 import Hero from "./Components/Hero";
 import book from "./book.svg"
 import AuthComponent from "./Components/authComponet";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { auth, getCurrentUser, obterInformacoesUsuarioFirestore } from "./BackEnd/Firebase"; // Substitua pelo caminho correto para o arquivo Firebase.js
 
 
@@ -16,6 +16,38 @@ function App() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  
+  
+
+  useEffect(() => {
+    const usuario = auth.onAuthStateChanged((user) => {
+      let registro = document.getElementById('registroButton')
+      if (user) {
+        if (user.perfil === 'diretor') {
+          setIsLoggedIn(true);
+          console.log('logado');
+          registro.style.display = 'block'
+          registro.style.width = '100%'
+        } else {
+          setIsLoggedIn(false);
+          console.log('usuário não permitido');
+          registro.style.display = 'none'
+  
+        }
+      } else {
+        setIsLoggedIn(false);
+        console.log('deslogado');
+        registro.style.display = 'none'
+  
+      }
+    });
+ usuario();
+ 
+ 
+ 
+});
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -101,8 +133,10 @@ function App() {
         </div>
         <div className="form-control mt-6">
           <button onClick={handleLogin}  className="btn btn-primary">Login</button>
+          <div id="registroButton">
           <span className="block text-center text-gray-700">--ou--</span>
-          <button className="btn btn-info" onClick={pagCadastro} >Cadastre-se</button>
+          <button className="btn btn-info w-max" onClick={pagCadastro} >Cadastre-se</button>
+          </div>
             <dialog id="my_modal_4" className="modal">
               <div className="modal-box w-11/12 max-w-5xl">
                 <h3 className="font-bold text-lg">Erro no Login!</h3>
