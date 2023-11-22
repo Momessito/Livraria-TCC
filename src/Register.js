@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Firebase, { addUser, auth } from "./BackEnd/Firebase";
 
 function Register() {
@@ -9,6 +9,7 @@ function Register() {
   const [Perfil, setPerfil] = useState("Professor");
   const [password, setPassword] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -69,7 +70,32 @@ function Register() {
       console.error("Erro ao cadastrar: ", error.message);
       // Adicione lógica para fornecer feedback ao usuário
     }
-  };
+}};
+
+  useEffect(() => {
+    const usuario = auth.onAuthStateChanged((user) => {
+      if (user) {
+        if (user.perfil === 'diretor') {
+          setIsLoggedIn(true);
+          console.log('logado');
+        } else {
+          setIsLoggedIn(false);
+          console.log('usuário não permitido');
+        }
+      } else {
+        setIsLoggedIn(false);
+        console.log('deslogado');
+        window.location.href = '/';
+      }
+  });
+  
+  
+    return () => usuario();
+  
+  
+  
+  
+    
 
     // Função para salvar dados adicionais na Realtime Database
   
