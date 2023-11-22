@@ -81,18 +81,20 @@ function Register() {
   useEffect(() => {
     const usuario = auth.onAuthStateChanged((user) => {
       if (user) {
+        console.log('Usuário logado:', user);
         if (user.perfil === 'diretor') {
           setIsLoggedIn(true);
-          console.log('logado');
+          console.log('Diretor logado');
         } else {
           setIsLoggedIn(false);
-          console.log('usuário não permitido');
+          console.log('Usuário não permitido');
         }
       } else {
         setIsLoggedIn(false);
-        console.log('deslogado');
+        console.log('Usuário deslogado');
         window.location.href = '/';
       }
+    
     });
  
  
