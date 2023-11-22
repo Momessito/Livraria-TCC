@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Firebase, { addUser, auth } from "./BackEnd/Firebase";
+
 
 function Register() {
   const [idCliente, setIdCliente] = useState("");
@@ -9,6 +10,8 @@ function Register() {
   const [Perfil, setPerfil] = useState("Professor");
   const [password, setPassword] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,14 +24,17 @@ function Register() {
     }
   };
 
+
   const handleSelectChange = (e) => {
     // O valor selecionado estará em e.target.value
     const novoPerfil = e.target.value;
     setPerfil(novoPerfil);
 
+
     // Você pode fazer o que quiser com o valor aqui
     console.log('Novo valor selecionado:', novoPerfil);
   };
+
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -43,36 +49,62 @@ function Register() {
         // Adicione lógica para fornecer feedback ao usuário
         return;
       }
-  
+ 
       const cpfRegex = /^\d{11}$/;
       if (!cpfRegex.test(cpf)) {
         console.error("CPF inválido");
         // Adicione lógica para fornecer feedback ao usuário
         return;
       }
-  
+ 
       // Adicione um indicador visual de carregamento
       // Isso pode ser um spinner ou uma mensagem na interface do usuário
-  
+ 
       await auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
           var user = userCredential.user;
           addUser(user.uid, nome, cpf, Perfil);
         });
-  
+ 
       // Remova o indicador visual de carregamento
       // Redirecione o usuário ou faça outra ação relevante após o registro bem-sucedido
-  
+ 
       setLoginSuccess(true);
       localStorage.setItem("userEmail", email);
     } catch (error) {
       console.error("Erro ao cadastrar: ", error.message);
       // Adicione lógica para fornecer feedback ao usuário
     }
-  };
+  }
+
+
+  useEffect(() => {
+    const usuario = auth.onAuthStateChanged((user) => {
+      if (user) {
+        if (user.perfil === 'diretor') {
+          setIsLoggedIn(true);
+          console.log('logado');
+        } else {
+          setIsLoggedIn(false);
+          console.log('usuário não permitido');
+        }
+      } else {
+        setIsLoggedIn(false);
+        console.log('deslogado');
+        window.location.href = '/';
+      }
+    });
+ 
+ 
+    return () => usuario();
+ 
+ 
+ 
+});
+
 
     // Função para salvar dados adicionais na Realtime Database
-  
+ 
   return (
     <div className="App">
       <div className="text-sm breadcrumbs m-10">
@@ -155,6 +187,8 @@ function Register() {
       </select>
 
 
+
+
                 <label className="label">
                 <span className="label-text">Senha</span>
                 </label>
@@ -177,4 +211,8 @@ function Register() {
   );
 }
 
+
 export default Register;
+
+
+
