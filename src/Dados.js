@@ -1,6 +1,11 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { auth } from "./BackEnd/Firebase";
 
 function BasesDados(){
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   function Acess() {
     let input = document.getElementById('InputInst');
     let text = document.getElementById('smallInst');
@@ -16,6 +21,33 @@ function BasesDados(){
 
     }
   }
+
+  const usuario = auth.onAuthStateChanged((user) => {
+    if (user) {
+      if (user.perfil === 'diretor') {
+        setIsLoggedIn(true);
+        console.log('logado');
+      } else {
+        setIsLoggedIn(false);
+        console.log('usuário não permitido');
+
+      }
+    } else {
+      setIsLoggedIn(false);
+      console.log('deslogado');
+
+    }
+  });
+
+  useEffect(() => {
+   
+ usuario();
+ 
+ 
+ 
+});
+
+
     return(<div>
 <div class="bg-gray-50 min-h-screen flex flex-col items-center justify-center px-16">
       <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Bem Vindo as instituições</h1>
