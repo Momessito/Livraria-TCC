@@ -35,6 +35,7 @@ function CadL() {
             materia,
             quantidade,
             validade);
+
         document.getElementById('my_modal_4').showModal();
     }
     return (
@@ -43,7 +44,7 @@ function CadL() {
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
 
-                        <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="500" viewBox="0 0 655.04715 473.4057" >
+                        <svg className="svg" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="500" viewBox="0 0 655.04715 473.4057" >
                             <path d="M787.31056,255.89377c-1.65466-12.13655-3.72987-25.16694-12.28987-33.92808a28.78566,28.78566,0,0,0-41.59054.43047c-6.23108,6.64735-8.98285,15.98128-9.23469,25.089s1.77661,18.11434,4.02681,26.94334a83.04327,83.04327,0,0,0,34.65826-6.82181,55.84219,55.84219,0,0,1,8.30984-3.26239c2.88751-.73493,4.94581,1.11445,7.63182,2.404l1.47445-2.82319c1.207,2.24618,4.94435,1.58037,6.3-.57936C787.95205,261.18611,787.65511,258.42024,787.31056,255.89377Z" transform="translate(-272.47643 -213.29715)" fill="#2f2e41" />
 
                             <path d="M737.57332,307.13788l3.44812-17.61353L715.1681,278.3319l-46.21928-22.143a10.27075,10.27075,0,1,0-7.44548,11.5L705.511,294.84741Z" transform="translate(-272.47643 -213.29715)" fill="#ffb8b8" />

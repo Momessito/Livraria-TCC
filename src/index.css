@@ -18,6 +18,9 @@
     .hero-content{
         margin-top: 100px;
     }
+    .svg{
+        width: 300px;
+    }
 }
 @media (max-width: 1405px) and (min-width: 425px) {
     .hero > * {
